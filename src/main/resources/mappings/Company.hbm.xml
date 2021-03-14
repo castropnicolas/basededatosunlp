@@ -1,0 +1,17 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.example.demo.model">
+    <class name="Company" table="companies">
+        <id name="id" column="id">
+            <generator class="org.hibernate.id.UUIDGenerator"/>
+        </id>
+
+        <bag name="users" lazy="extra" cascade="all">
+            <key column="company_id" not-null="false"/>
+            <one-to-many class="com.example.demo.model.User"/>
+        </bag>
+    </class>
+</hibernate-mapping>
