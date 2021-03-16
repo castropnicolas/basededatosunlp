@@ -1,7 +1,7 @@
-package com.example.demo.model;
+package ar.edu.unlp.model;
 
-import com.example.demo.repository.RepositoryLocator;
-import com.example.demo.repository.UserRepository;
+import ar.edu.unlp.repository.RepositoryLocator;
+import ar.edu.unlp.repository.UserRepository;
 
 import java.util.ArrayList;
 import java.util.Collection;

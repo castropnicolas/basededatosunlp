@@ -1,4 +1,4 @@
-package com.example.demo.repository;
+package ar.edu.unlp.repository;
 
 public interface CustomUserRepository {
 

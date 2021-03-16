@@ -1,6 +1,6 @@
-package com.example.demo.service;
+package ar.edu.unlp.service;
 
-import com.example.demo.dto.UserDTO;
+import ar.edu.unlp.dto.UserDTO;
 
 public interface IUserService {
 

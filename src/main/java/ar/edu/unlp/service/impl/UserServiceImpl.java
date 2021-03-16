@@ -1,13 +1,13 @@
-package com.example.demo.service.impl;
+package ar.edu.unlp.service.impl;
 
-import com.example.demo.dto.DTOFactory;
-import com.example.demo.dto.UserDTO;
-import com.example.demo.model.Company;
-import com.example.demo.model.User;
-import com.example.demo.repository.CompanyRepository;
-import com.example.demo.repository.RepositoryLocator;
-import com.example.demo.repository.UserRepository;
-import com.example.demo.service.IUserService;
+import ar.edu.unlp.model.Company;
+import ar.edu.unlp.repository.CompanyRepository;
+import ar.edu.unlp.repository.RepositoryLocator;
+import ar.edu.unlp.repository.UserRepository;
+import ar.edu.unlp.service.IUserService;
+import ar.edu.unlp.dto.DTOFactory;
+import ar.edu.unlp.dto.UserDTO;
+import ar.edu.unlp.model.User;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

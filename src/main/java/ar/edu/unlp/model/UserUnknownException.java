@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package ar.edu.unlp.model;
 
 public class UserUnknownException extends Exception {
 }

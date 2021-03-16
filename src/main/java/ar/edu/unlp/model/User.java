@@ -1,17 +1,25 @@
-package com.example.demo.dto;
+package ar.edu.unlp.model;
 
 import java.util.UUID;
 
-public class UserDTO {
+public class User {
 
 	private UUID id;
-	private String name;
+
 	private String username;
 
-	public UserDTO(UUID anId, String anUsername, String aName) {
-		this.setId(anId);
-		this.setName(aName);
+	private String password;
+
+	private String name;
+
+	public User() {
+
+	}
+
+	public User(String anUsername, String aPassword, String aName) {
 		this.setUsername(anUsername);
+		this.setName(aName);
+		this.setPassword(aPassword);
 	}
 
 	public UUID getId() {
@@ -28,6 +36,14 @@ public class UserDTO {
 
 	public void setUsername(String anUsername) {
 		this.username = anUsername;
+	}
+
+	public String getPassword() {
+		return this.password;
+	}
+
+	public void setPassword(String aPassword) {
+		this.password = aPassword;
 	}
 
 	public String getName() {

@@ -1,6 +1,6 @@
-package com.example.demo.dto;
+package ar.edu.unlp.dto;
 
-import com.example.demo.model.User;
+import ar.edu.unlp.model.User;
 
 public class DTOFactory {
 

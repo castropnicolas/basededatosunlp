@@ -1,15 +1,15 @@
-package com.example.demo.api;
+package ar.edu.unlp.api;
 
-import com.example.demo.service.IUserService;
+import ar.edu.unlp.service.IUserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class DemoController {
+public class UserController {
 
     private IUserService usersService;
 
-    public DemoController(IUserService usersService) {
+    public UserController(IUserService usersService) {
         this.usersService = usersService;
     }
 
