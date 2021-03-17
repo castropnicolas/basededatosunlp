@@ -8,5 +8,6 @@ spring:
     mapping-resources:
       - mappings/User.hbm.xml
       - mappings/Company.hbm.xml
+    show-sql: true
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.xml

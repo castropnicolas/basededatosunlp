@@ -68,6 +68,8 @@ public class Company {
 
     public User findByUsername(String username) throws UserUnknownException {
         User user = this.getUserRepository().findByUsername(username);
+        if (user == null)
+            throw new UserUnknownException();
         return user;
     }
 }

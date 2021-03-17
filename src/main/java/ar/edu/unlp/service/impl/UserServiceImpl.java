@@ -1,13 +1,14 @@
 package ar.edu.unlp.service.impl;
 
+import ar.edu.unlp.dto.DTOFactory;
+import ar.edu.unlp.dto.UserDTO;
 import ar.edu.unlp.model.Company;
+import ar.edu.unlp.model.User;
+import ar.edu.unlp.model.UserUnknownException;
 import ar.edu.unlp.repository.CompanyRepository;
 import ar.edu.unlp.repository.RepositoryLocator;
 import ar.edu.unlp.repository.UserRepository;
 import ar.edu.unlp.service.IUserService;
-import ar.edu.unlp.dto.DTOFactory;
-import ar.edu.unlp.dto.UserDTO;
-import ar.edu.unlp.model.User;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -37,6 +38,13 @@ public class UserServiceImpl implements IUserService {
         Collection<UserDTO> userDTOS = new ArrayList<>();
         users.forEach(anUser -> userDTOS.add(this.getDtoFactory().createUserDTO(anUser)));
         return userDTOS;
+    }
+
+    @Override
+    public UserDTO findByUsername(String username) throws UserUnknownException {
+        Company company = this.getCompanyRepository().findFirstByOrderById();
+        User user = company.findByUsername(username);
+        return this.getDtoFactory().createUserDTO(user);
     }
 
     public UserRepository getUserRepository() {

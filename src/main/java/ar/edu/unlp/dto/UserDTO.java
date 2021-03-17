@@ -8,6 +8,10 @@ public class UserDTO {
 	private String name;
 	private String username;
 
+	public UserDTO() {
+
+	}
+
 	public UserDTO(UUID anId, String anUsername, String aName) {
 		this.setId(anId);
 		this.setName(aName);
