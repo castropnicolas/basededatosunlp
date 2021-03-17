@@ -4,12 +4,12 @@
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-	<changeSet author="javier" id="1">
+	<changeSet author="nicolas" id="1">
 		<createSequence minValue="1" incrementBy="1"
 			sequenceName="hibernate_sequence" />
 	</changeSet>
 
-	<changeSet author="javier" id="2">
+	<changeSet author="nicolas" id="2">
 
 		<createTable tableName="users">
 			<column name="id" type="UUID">

@@ -1,11 +1,10 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/basededatosunlp
-    driverClassName: org.postgresql.Driver
-    username: postgres
-    password: postgres
+    url: jdbc:mysql://localhost:3306/basededatosunlp?serverTimezone=UTC
+    username: root
+    password:
   jpa:
-    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     mapping-resources:
       - mappings/User.hbm.xml
       - mappings/Company.hbm.xml
