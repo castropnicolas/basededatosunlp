@@ -13,4 +13,7 @@ public interface IUserService {
 
     UserDTO findByUsername(String username) throws UserUnknownException;
 
+    void deleteByUsername(String username) throws UserUnknownException;
+
+    void deleteById(String id) throws IllegalArgumentException;
 }

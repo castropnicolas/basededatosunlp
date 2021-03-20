@@ -72,4 +72,20 @@ public class Company {
             throw new UserUnknownException();
         return user;
     }
+
+    public void deleteByUsername(String username) throws UserUnknownException {
+        Long amount = this.getUserRepository().deleteByUsername(username);
+        if (amount == 0) throw new UserUnknownException();
+    }
+
+    public void deleteById(String id) throws IllegalArgumentException {
+        try {
+            UUID uid = UUID.fromString(id);
+            this.getUserRepository().deleteById(uid);
+        }
+        catch(IllegalArgumentException i) {
+            throw new IllegalArgumentException("Id de usuario inválido");
+        }
+
+    }
 }

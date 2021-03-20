@@ -1,11 +1,14 @@
 package ar.edu.unlp.dto;
 
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 public class UserDTO {
 
 	private UUID id;
 	private String name;
+
+	@NotNull
 	private String username;
 
 	public UserDTO() {

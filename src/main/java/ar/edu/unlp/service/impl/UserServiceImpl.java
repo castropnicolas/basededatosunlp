@@ -47,6 +47,18 @@ public class UserServiceImpl implements IUserService {
         return this.getDtoFactory().createUserDTO(user);
     }
 
+    @Override
+    public void deleteByUsername(String username) throws UserUnknownException {
+        Company company = this.getCompanyRepository().findFirstByOrderById();
+        company.deleteByUsername(username);
+    }
+
+    @Override
+    public void deleteById(String id) throws IllegalArgumentException {
+        Company company = this.getCompanyRepository().findFirstByOrderById();
+        company.deleteById(id);
+    }
+
     public UserRepository getUserRepository() {
         return RepositoryLocator.getInstance().getUserRepository();
     }
