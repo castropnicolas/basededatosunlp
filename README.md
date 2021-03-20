@@ -8,23 +8,23 @@
 - Build the application.
 - Check app application.
 
-## BUILD the application 
+## BUILD the application
 mvn clean install
 
-## BUILD AND UP Docker Compose 
+## BUILD AND UP Docker Compose
 docker-compose up --build   
-docker-compose down <- down docker compose     
+docker-compose down <- down docker compose
 
-## Check app application 
+## Check app application
 http://localhost:8080/user/all
 
-### Example POST /user/save 
+### Example POST /user/save
 curl -s -X POST \
-  http://localhost:8080/user/save \
-  -H 'Content-Type: application/json' \
-  -d '{"name":"Your Name"}'
+http://localhost:8080/user/create \
+-H 'Content-Type: application/json' \
+-d '{"username":"quito"}'
 
 
 ### GET /user/{id}
 curl -s -X GET \
-  http://localhost:8080/user/1
+http://localhost:8080/user/quito
