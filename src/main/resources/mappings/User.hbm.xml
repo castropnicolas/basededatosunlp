@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="ar.edu.unlp.model">
-    <class name="ar.edu.unlp.model.User" table="users">
+    <class name="ar.edu.unlp.model.User" table="users" discriminator-value="U">
         <id name="id" column="id">
             <generator class="org.hibernate.id.UUIDGenerator"/>
         </id>
@@ -12,6 +12,14 @@
         <property name="username" column="username" type="string"/>
         <property name="password" column="password" type="string"/>
         <property name="name" column="name" type="string"/>
-
+      <!--  <property name="createdAt" column="created_at" type="timestamp"/>-->
     </class>
+
+   <!-- <joined-subclass name="Run" extends="User" table="runs">
+        <key column="id"/>
+    </joined-subclass>
+
+    <joined-subclass name="Cyclist" extends="User" table="cyclist">
+        <key column="id"/>
+    </joined-subclass>-->
 </hibernate-mapping>

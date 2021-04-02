@@ -56,7 +56,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public void deleteById(String id) throws IllegalArgumentException {
         Company company = this.getCompanyRepository().findFirstByOrderById();
-        company.deleteById(id);
+        company.deleteUserById(id);
     }
 
     public UserRepository getUserRepository() {

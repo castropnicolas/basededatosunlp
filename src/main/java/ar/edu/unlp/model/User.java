@@ -1,5 +1,6 @@
 package ar.edu.unlp.model;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class User {
@@ -11,6 +12,8 @@ public class User {
 	private String password;
 
 	private String name;
+
+	private LocalDateTime createdAt;
 
 	public User() {
 
@@ -54,4 +57,11 @@ public class User {
 		this.name = aName;
 	}
 
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
 }

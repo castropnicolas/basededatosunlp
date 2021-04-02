@@ -17,11 +17,11 @@
 
         <createTable tableName="companies">
             <column name="id" type="UUID">
-                <constraints primaryKey="true" />
+                <constraints primaryKey="true"/>
             </column>
         </createTable>
         <rollback>
-            <dropTable tableName="companies" />
+            <dropTable tableName="companies"/>
         </rollback>
 
     </changeSet>

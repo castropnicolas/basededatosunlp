@@ -13,6 +13,8 @@ public class Company {
 
     private Collection<User> users;
 
+//    private Collection<Run> runs;
+
     private static Company instance;
 
     private Company() {
@@ -42,6 +44,14 @@ public class Company {
         this.users = users;
     }
 
+/*    public Collection<Run> getRuns() {
+        return runs;
+    }
+
+    public void setRuns(Collection<Run> runs) {
+        this.runs = runs;
+    }*/
+
     public User addUser(String username, String password, String name) throws UsernameNotUniqueException {
         if (!this.getUserRepository().existsByUsername(username)) {
             User newUser = new User(username, password, name);
@@ -62,6 +72,11 @@ public class Company {
         }
     }
 
+    /*public Run addRun(Run run) {
+        this.getRuns().add(run);
+        return run;
+    }*/
+
     private UserRepository getUserRepository() {
         return RepositoryLocator.getInstance().getUserRepository();
     }
@@ -78,12 +93,11 @@ public class Company {
         if (amount == 0) throw new UserUnknownException();
     }
 
-    public void deleteById(String id) throws IllegalArgumentException {
+    public void deleteUserById(String id) throws IllegalArgumentException {
         try {
             UUID uid = UUID.fromString(id);
             this.getUserRepository().deleteById(uid);
-        }
-        catch(IllegalArgumentException i) {
+        } catch (IllegalArgumentException i) {
             throw new IllegalArgumentException("Id de usuario inválido");
         }
 
