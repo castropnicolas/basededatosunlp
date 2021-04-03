@@ -13,12 +13,13 @@ public class Company {
 
     private Collection<User> users;
 
-//    private Collection<Run> runs;
+    private Collection<Run> runs;
 
     private static Company instance;
 
     private Company() {
         this.setUsers(new ArrayList<>());
+        this.setRuns(new ArrayList<>());
     }
 
     public static Company getInstance() {
@@ -44,13 +45,13 @@ public class Company {
         this.users = users;
     }
 
-/*    public Collection<Run> getRuns() {
+    public Collection<Run> getRuns() {
         return runs;
     }
 
     public void setRuns(Collection<Run> runs) {
         this.runs = runs;
-    }*/
+    }
 
     public User addUser(String username, String password, String name) throws UsernameNotUniqueException {
         if (!this.getUserRepository().existsByUsername(username)) {
@@ -72,10 +73,9 @@ public class Company {
         }
     }
 
-    /*public Run addRun(Run run) {
+    public void addRun(Run run) {
         this.getRuns().add(run);
-        return run;
-    }*/
+    }
 
     private UserRepository getUserRepository() {
         return RepositoryLocator.getInstance().getUserRepository();
@@ -100,6 +100,5 @@ public class Company {
         } catch (IllegalArgumentException i) {
             throw new IllegalArgumentException("Id de usuario inválido");
         }
-
     }
 }

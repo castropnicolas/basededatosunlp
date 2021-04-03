@@ -1,15 +1,18 @@
 package ar.edu.unlp.model;
 
-public class Location {
-    private Double longitude;
-    private Double latitude;
+import java.util.UUID;
 
-    public Double getLongitude() {
-        return longitude;
+public class Location {
+    private UUID id;
+    private Double latitude;
+    private Double longitude;
+
+    public UUID getId() {
+        return id;
     }
 
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public Double getLatitude() {
@@ -19,4 +22,13 @@ public class Location {
     public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
 }

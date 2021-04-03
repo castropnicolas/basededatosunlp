@@ -13,5 +13,10 @@
             <key column="company_id" not-null="false"/>
             <one-to-many class="ar.edu.unlp.model.User"/>
         </bag>
+
+        <bag name="runs" lazy="extra" cascade="all">
+            <key column="company_id" not-null="false"/>
+            <one-to-many class="ar.edu.unlp.model.Run"/>
+        </bag>
     </class>
 </hibernate-mapping>

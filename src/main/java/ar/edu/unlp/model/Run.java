@@ -1,12 +1,29 @@
 package ar.edu.unlp.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.UUID;
 
-public class Run extends User {
+public class Run {
 
+    private UUID id;
     private LocalDate start;
     private LocalDate end;
     private String state;
+    private Collection<Location> locations;
+
+    public Run() {
+        this.setLocations(new ArrayList<>());
+    }
+
+    public UUID getId() {
+        return this.id;
+    }
+
+    public void setId(UUID anId) {
+        this.id = anId;
+    }
 
     public LocalDate getStart() {
         return start;
@@ -32,7 +49,19 @@ public class Run extends User {
         this.state = state;
     }
 
-    public Integer speed() {
+    public Collection<Location> getLocations() {
+        return locations;
+    }
+
+    public void setLocations(Collection<Location> locations) {
+        this.locations = locations;
+    }
+
+    public void addLocation(Location location) {
+        this.getLocations().add(location);
+    }
+
+    /* public Integer speed() {
         return null;
     }
 
@@ -58,5 +87,5 @@ public class Run extends User {
 
     public Integer ranking() {
         return null;
-    }
+    }*/
 }

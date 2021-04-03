@@ -13,7 +13,7 @@
         </addColumn>
     </changeSet>
 
-    <changeSet author="nicolas" id="4">
+    <changeSet author="nicolas" id="3">
 
         <createTable tableName="companies">
             <column name="id" type="UUID">

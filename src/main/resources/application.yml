@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://dbmysql:3306/basededatosunlp?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/basededatosunlp?serverTimezone=UTC
     username: root
     password:
   jpa:
@@ -8,6 +8,8 @@ spring:
     mapping-resources:
       - mappings/User.hbm.xml
       - mappings/Company.hbm.xml
+      - mappings/Run.hbm.xml
+      - mappings/Location.hbm.xml
     show-sql: true
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.xml

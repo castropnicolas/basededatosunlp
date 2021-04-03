@@ -13,4 +13,33 @@
         </addColumn>
     </changeSet>
 
+    <changeSet author="nicolas" id="4">
+        <createTable tableName="runs">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="start" type="timestamp" />
+            <column name="end" type="timestamp" />
+            <column name="state" type="VARCHAR(255)" />
+            <column name="company_id" type="UUID" />
+        </createTable>
+        <rollback>
+            <dropTable tableName="runs" />
+        </rollback>
+    </changeSet>
+
+    <changeSet author="nicolas" id="5">
+        <createTable tableName="locations">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="latitude" type="DOUBLE" />
+            <column name="longitude" type="DOUBLE" />
+            <column name="run_id" type="UUID" />
+        </createTable>
+        <rollback>
+            <dropTable tableName="runs" />
+        </rollback>
+    </changeSet>
+
 </databaseChangeLog>
