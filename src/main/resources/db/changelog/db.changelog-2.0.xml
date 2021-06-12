@@ -8,7 +8,7 @@
         <addColumn tableName="users">
             <column afterColumn="username"
                     name="created_at"
-                    type="timestamp">
+                    type="datetime">
             </column>
         </addColumn>
     </changeSet>

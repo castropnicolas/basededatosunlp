@@ -3,8 +3,10 @@ package ar.edu.unlp.model;
 import ar.edu.unlp.repository.RepositoryLocator;
 import ar.edu.unlp.repository.UserRepository;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.UUID;
 
 public class Company {
@@ -56,6 +58,7 @@ public class Company {
     public User addUser(String username, String password, String name) throws UsernameNotUniqueException {
         if (!this.getUserRepository().existsByUsername(username)) {
             User newUser = new User(username, password, name);
+            newUser.setCreatedAt(new Date());
             this.getUsers().add(newUser);
             return newUser;
         } else {
