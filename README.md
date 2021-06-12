@@ -12,7 +12,7 @@
 mvn clean install
 
 ## BUILD AND UP Docker Compose
-docker-compose up --build   
+docker-compose up --build
 docker-compose down <- down docker compose
 
 ## Check app application
@@ -23,7 +23,6 @@ curl -s -X POST \
 http://localhost:8080/user/create \
 -H 'Content-Type: application/json' \
 -d '{"username":"quito"}'
-
 
 ### GET /user/{id}
 curl -s -X GET \
