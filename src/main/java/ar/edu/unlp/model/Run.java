@@ -1,14 +1,14 @@
 package ar.edu.unlp.model;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 public class Run {
 
     private String id;
-    private LocalDateTime start;
-    private LocalDateTime end;
+    private Date start;
+    private Date end;
     private String state;
     private Collection<Location> locations;
 
@@ -24,19 +24,19 @@ public class Run {
         this.id = anId;
     }
 
-    public LocalDateTime getStart() {
+    public Date getStart() {
         return start;
     }
 
-    public void setStart(LocalDateTime start) {
+    public void setStart(Date start) {
         this.start = start;
     }
 
-    public LocalDateTime getEnd() {
+    public Date getEnd() {
         return end;
     }
 
-    public void setEnd(LocalDateTime end) {
+    public void setEnd(Date end) {
         this.end = end;
     }
 
