@@ -96,7 +96,6 @@ public class Company {
 
     public void deleteUserById(String id) throws IllegalArgumentException {
         try {
-//            UUID uid = UUID.fromString(id);
             this.getUserRepository().deleteById(id);
         } catch (IllegalArgumentException i) {
             throw new IllegalArgumentException("Id de usuario inválido");

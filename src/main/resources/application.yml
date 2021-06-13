@@ -18,7 +18,6 @@ spring:
       - mappings/Run.hbm.xml
       - mappings/Location.hbm.xml
     show-sql: true
-    hibernate.ddl-auto: update
-    hibernate.naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    hibernate.ddl-auto: none
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.xml
