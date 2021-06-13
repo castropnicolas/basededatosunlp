@@ -1,15 +1,22 @@
 spring:
+  application:
+    name: basededatos-unlp
   datasource:
-    url: jdbc:mysql://localhost:3306/basededatosunlp?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://docker-mysql:3306/basededatosunlp?serverTimezone=UTC
     username: root
-    password:
+    password: root
+    testWhileIdle: true
+    validationQuery: SELECT 1
   jpa:
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+#    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
     mapping-resources:
       - mappings/User.hbm.xml
       - mappings/Company.hbm.xml
       - mappings/Run.hbm.xml
       - mappings/Location.hbm.xml
     show-sql: true
+    hibernate.ddl-auto: update
+    hibernate.naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.xml
