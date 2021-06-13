@@ -3,11 +3,9 @@ package ar.edu.unlp.model;
 import ar.edu.unlp.repository.RepositoryLocator;
 import ar.edu.unlp.repository.UserRepository;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
-import java.util.UUID;
 
 public class Company {
 
