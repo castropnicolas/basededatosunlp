@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public class UserDTO {
 
-	private UUID id;
+	private String id;
 	private String name;
 
 	@NotNull
@@ -15,17 +15,17 @@ public class UserDTO {
 
 	}
 
-	public UserDTO(UUID anId, String anUsername, String aName) {
+	public UserDTO(String anId, String anUsername, String aName) {
 		this.setId(anId);
 		this.setName(aName);
 		this.setUsername(anUsername);
 	}
 
-	public UUID getId() {
+	public String getId() {
 		return this.id;
 	}
 
-	public void setId(UUID anId) {
+	public void setId(String anId) {
 		this.id = anId;
 	}
 

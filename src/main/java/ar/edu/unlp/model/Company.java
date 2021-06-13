@@ -11,7 +11,7 @@ import java.util.UUID;
 
 public class Company {
 
-    private UUID id;
+    private String id;
 
     private Collection<User> users;
 
@@ -31,11 +31,11 @@ public class Company {
         return instance;
     }
 
-    public UUID getId() {
+    public String getId() {
         return this.id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -98,8 +98,8 @@ public class Company {
 
     public void deleteUserById(String id) throws IllegalArgumentException {
         try {
-            UUID uid = UUID.fromString(id);
-            this.getUserRepository().deleteById(uid);
+//            UUID uid = UUID.fromString(id);
+            this.getUserRepository().deleteById(id);
         } catch (IllegalArgumentException i) {
             throw new IllegalArgumentException("Id de usuario inválido");
         }

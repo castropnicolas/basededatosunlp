@@ -1,12 +1,10 @@
 package ar.edu.unlp.model;
 
-import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.UUID;
 
 public class User {
 
-    private UUID id;
+    private String id;
     private String username;
     private String password;
     private String name;
@@ -22,11 +20,11 @@ public class User {
         this.setPassword(aPassword);
     }
 
-    public UUID getId() {
+    public String getId() {
         return this.id;
     }
 
-    public void setId(UUID anId) {
+    public void setId(String anId) {
         this.id = anId;
     }
 
