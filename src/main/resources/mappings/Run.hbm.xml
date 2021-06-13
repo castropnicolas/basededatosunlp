@@ -9,8 +9,8 @@
             <generator class="org.hibernate.id.UUIDHexGenerator"/>
         </id>
 
-        <property name="start" column="start" type="timestamp"/>
-        <property name="end" column="end" type="timestamp"/>
+        <property name="start" column="start" type="date"/>
+        <property name="end" column="end" type="date"/>
         <property name="state" column="state" type="string"/>
 
         <bag name="locations" lazy="extra" cascade="all">
