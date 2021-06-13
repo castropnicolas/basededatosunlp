@@ -1,11 +1,8 @@
 # Spring Boot with MySQL and Docker Compose
 
 ## STEPS FOR THIS SPRING BOOT APP
-- Define dependencies in pom.xml.
-- Create a Spring Boot Main @SpringBootApplication.
-- Create components @Entity / @RestController / @Repository.
-- Create application.properties.
 - Build the application.
+- Build and Up Docker Compose.
 - Check app application.
 
 ## BUILD the application
@@ -14,6 +11,10 @@ mvn clean install
 ## BUILD AND UP Docker Compose
 docker-compose up --build
 docker-compose down <- down docker compose
+
+## Run company script
+docker exec -it docker-mysql mysql -uroot -p
+INSERT INTO companies(id) VALUES ('a4295f86-6cd0-4f48-acda-080005f3a558');
 
 ## Check app application
 http://localhost:8080/user/all
