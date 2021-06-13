@@ -12,7 +12,7 @@
 	<changeSet author="nicolas" id="2">
 
 		<createTable tableName="users">
-			<column name="id" type="UUID">
+			<column name="id" type="VARCHAR(255)">
 				<constraints primaryKey="true" />
 			</column>
 			<column name="name" type="VARCHAR(255)" />

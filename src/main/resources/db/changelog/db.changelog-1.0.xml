@@ -8,7 +8,7 @@
         <addColumn tableName="users">
             <column afterColumn="username"
                     name="company_id"
-                    type="UUID">
+                    type="VARCHAR(255)">
             </column>
         </addColumn>
     </changeSet>
@@ -16,7 +16,7 @@
     <changeSet author="nicolas" id="3">
 
         <createTable tableName="companies">
-            <column name="id" type="UUID">
+            <column name="id" type="VARCHAR(255)">
                 <constraints primaryKey="true"/>
             </column>
         </createTable>
