@@ -10,7 +10,6 @@
 	</changeSet>
 
 	<changeSet author="nicolas" id="2">
-
 		<createTable tableName="users">
 			<column name="id" type="VARCHAR(255)">
 				<constraints primaryKey="true" />
@@ -22,7 +21,6 @@
 		<rollback>
 			<dropTable tableName="users" />
 		</rollback>
-
 	</changeSet>
 	
 </databaseChangeLog>
