@@ -13,16 +13,6 @@ public enum State implements StateOperations {
     }
 
     @Override
-    public void next(Run run) {
-        operations.next(run);
-    }
-
-    @Override
-    public void prev(Run run) {
-        operations.prev(run);
-    }
-
-    @Override
     public void paused(Run run) {
         operations.paused(run);
     }
