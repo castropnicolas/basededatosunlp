@@ -24,13 +24,6 @@ import java.util.Optional;
 public class RunServiceImpl implements IRunService {
 
     @Override
-    public RunDTO addRun() throws Exception {
-        Company company = this.getCompanyRepository().findFirstByOrderById();
-        Run newRun = company.addRun();
-        return this.getDtoFactory().createRunDTO(newRun);
-    }
-
-    @Override
     public Collection<RunDTO> getAllRuns() {
         Company company = this.getCompanyRepository().findFirstByOrderById();
         Collection<Run> runs = company.getRuns();

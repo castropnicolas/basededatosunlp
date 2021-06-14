@@ -1,10 +1,13 @@
 package ar.edu.unlp.dto;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 public class UserDTO {
 
 	private String id;
+
+	@NotEmpty
 	private String name;
 
 	@NotNull

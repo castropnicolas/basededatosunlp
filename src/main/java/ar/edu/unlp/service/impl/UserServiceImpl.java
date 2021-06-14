@@ -48,9 +48,12 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public void deleteByUsername(String username) throws UserUnknownException {
+    public UserDTO updateUser(String username, UserDTO userDTO) throws UserUnknownException {
         Company company = this.getCompanyRepository().findFirstByOrderById();
-        company.deleteByUsername(username);
+        User user = company.findByUsername(username);
+        if (userDTO.getUsername() != null) user.setUsername(userDTO.getUsername());
+        if (userDTO.getName() != null) user.setName(userDTO.getName());
+        return this.getDtoFactory().createUserDTO(user);
     }
 
     @Override

@@ -23,11 +23,6 @@ public class UserController {
         this.usersService = usersService;
     }
 
-    @GetMapping("/create")
-    public void createUser() throws Exception {
-        this.getUsersService().addUser("esteban", "quito", "notevoyadecirmiclave");
-    }
-
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody @Valid UserDTO userDTO) throws Exception {
         this.getUsersService().addUser(userDTO.getName(), userDTO.getUsername(), "notevoyadecirmiclave");
@@ -51,19 +46,6 @@ public class UserController {
         return ResponseEntity.ok().body(userDTO);
     }
 
-    @DeleteMapping("/username/{username}")
-    public ResponseEntity<?> delete(@PathVariable String username) {
-        Map<String, Object> response = new HashMap<>();
-        try {
-            this.getUsersService().deleteByUsername(username);
-        } catch (UserUnknownException e) {
-            response.put("mensaje", "Nombre de usuario inexistente.");
-            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
-        }
-        response.put("mensaje", "¡Usuario eliminado con éxito!");
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteById(@PathVariable String id) {
         Map<String, Object> response = new HashMap<>();
@@ -75,6 +57,19 @@ public class UserController {
         }
         response.put("mensaje", "¡Usuario eliminado con éxito!");
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @PutMapping("/{username}")
+    public ResponseEntity<?> update(@PathVariable String username, @RequestBody UserDTO dto) {
+        UserDTO userDTO = null;
+        try {
+            userDTO = this.getUsersService().updateUser(username, dto);
+        } catch (UserUnknownException e) {
+            Map<String, Object> response = new HashMap<>();
+            response.put("mensaje", "Nombre de usuario inexistente.");
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(userDTO);
     }
 
     public IUserService getUsersService() {

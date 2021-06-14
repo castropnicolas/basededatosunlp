@@ -8,8 +8,6 @@ import java.util.Collection;
 
 public interface IRunService {
 
-    RunDTO addRun() throws Exception;
-
     Collection<RunDTO> getAllRuns();
 
     RunDTO pausedRun(String id) throws RunUnknownException;
