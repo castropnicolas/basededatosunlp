@@ -28,3 +28,6 @@ http://localhost:8080/user/create \
 ### GET /user/{id}
 curl -s -X GET \
 http://localhost:8080/user/quito
+
+### Access to swagger console
+http://localhost:8080/swagger-ui.html
