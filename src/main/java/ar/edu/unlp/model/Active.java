@@ -1,5 +1,7 @@
 package ar.edu.unlp.model;
 
+import java.util.Date;
+
 public class Active implements StateOperations {
 
     @Override
@@ -20,6 +22,7 @@ public class Active implements StateOperations {
     @Override
     public void closed(Run run) {
         run.setState(State.CLOSED);
+        run.setEnd(new Date());
     }
 
 }

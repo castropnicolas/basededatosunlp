@@ -15,9 +15,10 @@ public class RunDTO {
 
     }
 
-    public RunDTO(String anId, Date start, State state) {
+    public RunDTO(String anId, Date start, Date end, State state) {
         this.setId(anId);
         this.setStart(start);
+        this.setEnd(end);
         this.setState(state);
     }
 
