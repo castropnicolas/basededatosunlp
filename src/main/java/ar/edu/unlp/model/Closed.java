@@ -4,7 +4,7 @@ public class Closed implements StateOperations {
 
     @Override
     public void printStatus() {
-        System.out.println("Carrera creada.");
+        System.out.println("Carrera cerrada.");
     }
 
     @Override

@@ -4,7 +4,7 @@ public class Paused implements StateOperations {
 
     @Override
     public void printStatus() {
-        System.out.println("Carrera creada.");
+        System.out.println("Carrera pausada.");
     }
 
     @Override
