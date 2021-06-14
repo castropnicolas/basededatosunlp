@@ -2,7 +2,7 @@ package ar.edu.unlp.service.impl;
 
 import ar.edu.unlp.dto.DTOFactory;
 import ar.edu.unlp.dto.UserDTO;
-import ar.edu.unlp.model.Company;
+import ar.edu.unlp.model.RunningApp;
 import ar.edu.unlp.model.User;
 import ar.edu.unlp.exceptions.UserUnknownException;
 import ar.edu.unlp.repository.*;
@@ -17,7 +17,7 @@ import java.util.Collection;
 @Transactional
 public class UserServiceImpl implements IUserService {
 
-    public UserServiceImpl(UserRepository userRepository, CompanyRepository companyRepository, RunRepository runRepository, LocationRepository locationRepository) {
+    public UserServiceImpl(UserRepository userRepository, RunningAppRepository companyRepository, RunRepository runRepository, LocationRepository locationRepository) {
         RepositoryLocator.getInstance().setUserRepository(userRepository);
         RepositoryLocator.getInstance().setCompanyRepository(companyRepository);
         RepositoryLocator.getInstance().setRunRepository(runRepository);
@@ -26,14 +26,14 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public UserDTO addUser(String aName, String anUsername, String aPassword) throws Exception {
-        Company company = this.getCompanyRepository().findFirstByOrderById();
+        RunningApp company = this.getCompanyRepository().findFirstByOrderById();
         User newUser = company.addUser(anUsername, aPassword, aName);
         return this.getDtoFactory().createUserDTO(newUser);
     }
 
     @Override
     public Collection<UserDTO> getAllUsers() {
-        Company company = this.getCompanyRepository().findFirstByOrderById();
+        RunningApp company = this.getCompanyRepository().findFirstByOrderById();
         Collection<User> users = company.getUsers();
         Collection<UserDTO> userDTOS = new ArrayList<>();
         users.forEach(anUser -> userDTOS.add(this.getDtoFactory().createUserDTO(anUser)));
@@ -42,14 +42,14 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public UserDTO findByUsername(String username) throws UserUnknownException {
-        Company company = this.getCompanyRepository().findFirstByOrderById();
+        RunningApp company = this.getCompanyRepository().findFirstByOrderById();
         User user = company.findByUsername(username);
         return this.getDtoFactory().createUserDTO(user);
     }
 
     @Override
     public UserDTO updateUser(String username, UserDTO userDTO) throws UserUnknownException {
-        Company company = this.getCompanyRepository().findFirstByOrderById();
+        RunningApp company = this.getCompanyRepository().findFirstByOrderById();
         User user = company.findByUsername(username);
         if (userDTO.getUsername() != null) user.setUsername(userDTO.getUsername());
         if (userDTO.getName() != null) user.setName(userDTO.getName());
@@ -58,7 +58,7 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public void deleteById(String id) throws IllegalArgumentException {
-        Company company = this.getCompanyRepository().findFirstByOrderById();
+        RunningApp company = this.getCompanyRepository().findFirstByOrderById();
         company.deleteUserById(id);
     }
 
@@ -66,7 +66,7 @@ public class UserServiceImpl implements IUserService {
         return RepositoryLocator.getInstance().getUserRepository();
     }
 
-    public CompanyRepository getCompanyRepository() {
+    public RunningAppRepository getCompanyRepository() {
         return RepositoryLocator.getInstance().getCompanyRepository();
     }
 

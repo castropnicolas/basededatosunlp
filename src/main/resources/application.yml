@@ -14,7 +14,7 @@ spring:
     properties.hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
     mapping-resources:
       - mappings/User.hbm.xml
-      - mappings/Company.hbm.xml
+      - mappings/RunningApp.hbm.xml
       - mappings/Run.hbm.xml
       - mappings/Location.hbm.xml
     show-sql: true

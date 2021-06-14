@@ -4,18 +4,18 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="ar.edu.unlp.model">
-    <class name="ar.edu.unlp.model.Company" table="companies">
+    <class name="ar.edu.unlp.model.RunningApp" table="running_app">
         <id name="id" column="id">
             <generator class="org.hibernate.id.UUIDHexGenerator"/>
         </id>
 
         <bag name="users" lazy="extra" cascade="all">
-            <key column="company_id" not-null="false"/>
+            <key column="running_app_id" not-null="false"/>
             <one-to-many class="ar.edu.unlp.model.User"/>
         </bag>
 
         <bag name="runs" lazy="extra" cascade="all">
-            <key column="company_id" not-null="false"/>
+            <key column="running_app_id" not-null="false"/>
             <one-to-many class="ar.edu.unlp.model.Run"/>
         </bag>
     </class>

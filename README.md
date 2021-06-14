@@ -12,9 +12,9 @@ mvn clean install
 docker-compose up --build
 docker-compose down <- down docker compose
 
-## Run company script
+## Run insert script
 docker exec -it docker-mysql mysql -uroot -p
-INSERT INTO companies(id) VALUES ('a4295f86-6cd0-4f48-acda-080005f3a558');
+INSERT INTO running_app(id) VALUES ('a4295f86-6cd0-4f48-acda-080005f3a558');
 
 ## Check app application
 http://localhost:8080/user/all

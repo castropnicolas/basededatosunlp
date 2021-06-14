@@ -3,7 +3,6 @@ package ar.edu.unlp.model;
 import ar.edu.unlp.exceptions.RunUnknownException;
 import ar.edu.unlp.exceptions.UserUnknownException;
 import ar.edu.unlp.exceptions.UsernameNotUniqueException;
-import ar.edu.unlp.repository.LocationRepository;
 import ar.edu.unlp.repository.RepositoryLocator;
 import ar.edu.unlp.repository.RunRepository;
 import ar.edu.unlp.repository.UserRepository;
@@ -13,7 +12,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.Optional;
 
-public class Company {
+public class RunningApp {
 
     private String id;
 
@@ -21,16 +20,16 @@ public class Company {
 
     private Collection<Run> runs;
 
-    private static Company instance;
+    private static RunningApp instance;
 
-    private Company() {
+    private RunningApp() {
         this.setUsers(new ArrayList<>());
         this.setRuns(new ArrayList<>());
     }
 
-    public static Company getInstance() {
+    public static RunningApp getInstance() {
         if (instance == null) {
-            instance = new Company();
+            instance = new RunningApp();
         }
         return instance;
     }
@@ -70,22 +69,6 @@ public class Company {
         }
     }
 
-    public User addUser(User user) throws UsernameNotUniqueException {
-        if (!this.getUserRepository().existsByUsername(user.getUsername())) {
-            User newUser = new User(user.getUsername(), user.getPassword(), user.getName());
-            this.getUsers().add(newUser);
-            return newUser;
-        } else {
-            throw new UsernameNotUniqueException();
-        }
-    }
-
-    public Run addRun() {
-        Run newRun = new Run();
-        this.getRuns().add(newRun);
-        return newRun;
-    }
-
     public User findByUsername(String username) throws UserUnknownException {
         User user = this.getUserRepository().findByUsername(username);
         if (user == null)
@@ -98,11 +81,6 @@ public class Company {
         if (!optionalRun.isPresent())
             throw new RunUnknownException();
         return optionalRun.get();
-    }
-
-    public void deleteByUsername(String username) throws UserUnknownException {
-        Long amount = this.getUserRepository().deleteByUsername(username);
-        if (amount == 0) throw new UserUnknownException();
     }
 
     public void deleteUserById(String id) throws IllegalArgumentException {
@@ -158,7 +136,4 @@ public class Company {
         return RepositoryLocator.getInstance().getRunRepository();
     }
 
-    private LocationRepository getLocationRepository() {
-        return RepositoryLocator.getInstance().getLocationRepository();
-    }
 }

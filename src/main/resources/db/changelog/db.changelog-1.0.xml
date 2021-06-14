@@ -7,20 +7,20 @@
     <changeSet author="nicolas" id="addColumn">
         <addColumn tableName="users">
             <column afterColumn="username"
-                    name="company_id"
+                    name="running_app_id"
                     type="VARCHAR(255)">
             </column>
         </addColumn>
     </changeSet>
 
     <changeSet author="nicolas" id="3">
-        <createTable tableName="companies">
+        <createTable tableName="running_app">
             <column name="id" type="VARCHAR(255)">
                 <constraints primaryKey="true"/>
             </column>
         </createTable>
         <rollback>
-            <dropTable tableName="companies"/>
+            <dropTable tableName="running_app"/>
         </rollback>
     </changeSet>
 

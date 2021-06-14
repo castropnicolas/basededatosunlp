@@ -14,11 +14,4 @@
         <property name="createdAt" column="created_at" type="timestamp"/>
     </class>
 
-   <!-- <joined-subclass name="Run" extends="User" table="runs">
-        <key column="id"/>
-    </joined-subclass>
-
-    <joined-subclass name="Cyclist" extends="User" table="cyclist">
-        <key column="id"/>
-    </joined-subclass>-->
 </hibernate-mapping>

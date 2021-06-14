@@ -13,4 +13,8 @@
         </addColumn>
     </changeSet>
 
+    <changeSet id="6" author="nicolas">
+        <sqlFile dbms="mysql" path="db/changelog/insert.sql"/>
+    </changeSet>
+
 </databaseChangeLog>
