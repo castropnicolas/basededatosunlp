@@ -16,6 +16,7 @@
                 <param name="useNamed">true</param>
             </type>
         </property>
+        <property name="time" column="time" type="int"/>
         <bag name="locations" lazy="extra" cascade="all">
             <key column="run_id" not-null="false"/>
             <one-to-many class="ar.edu.unlp.model.Location"/>

@@ -21,4 +21,5 @@ public interface IRunService {
     RunDTO findById(String id) throws RunUnknownException;
 
     LocationDTO addLocation(String idRun, Double aLongitude, Double aLatitude);
+
 }

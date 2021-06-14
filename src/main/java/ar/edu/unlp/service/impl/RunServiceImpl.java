@@ -9,7 +9,6 @@ import ar.edu.unlp.model.Location;
 import ar.edu.unlp.model.Run;
 import ar.edu.unlp.repository.CompanyRepository;
 import ar.edu.unlp.repository.RepositoryLocator;
-import ar.edu.unlp.repository.UserRepository;
 import ar.edu.unlp.service.IRunService;
 import org.springframework.stereotype.Service;
 
@@ -70,10 +69,6 @@ public class RunServiceImpl implements IRunService {
         Company company = this.getCompanyRepository().findFirstByOrderById();
         Location newLocation = company.addLocationToRun(idRun, aLongitude, aLatitude);
         return this.getDtoFactory().createLocationDTO(newLocation);
-    }
-
-    public UserRepository getUserRepository() {
-        return RepositoryLocator.getInstance().getUserRepository();
     }
 
     public CompanyRepository getCompanyRepository() {

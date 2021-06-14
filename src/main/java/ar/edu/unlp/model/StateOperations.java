@@ -9,4 +9,6 @@ public interface StateOperations {
     void active(Run run);
 
     void closed(Run run);
+
+    Integer time(Run run);
 }

@@ -10,16 +10,18 @@ public class RunDTO {
     private Date start;
     private Date end;
     private State state;
+    private Integer time;
 
     public RunDTO() {
 
     }
 
-    public RunDTO(String anId, Date start, Date end, State state) {
+    public RunDTO(String anId, Date start, Date end, State state, Integer time) {
         this.setId(anId);
         this.setStart(start);
         this.setEnd(end);
         this.setState(state);
+        this.setTime(time);
     }
 
     public String getId() {
@@ -52,5 +54,13 @@ public class RunDTO {
 
     public void setState(State state) {
         this.state = state;
+    }
+
+    public Integer getTime() {
+        return time;
+    }
+
+    public void setTime(Integer time) {
+        this.time = time;
     }
 }

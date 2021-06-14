@@ -4,18 +4,13 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-    <changeSet author="nicolas" id="6">
-        <createTable tableName="users">
-            <column name="id" type="VARCHAR(255)">
-                <constraints primaryKey="true" />
+    <changeSet author="nicolas" id="addColumn">
+        <addColumn tableName="runs">
+            <column afterColumn="state"
+                    name="time"
+                    type="int">
             </column>
-            <column name="name" type="VARCHAR(255)" />
-            <column name="password" type="VARCHAR(255)" />
-            <column name="username" type="VARCHAR(255)" />
-        </createTable>
-        <rollback>
-            <dropTable tableName="users" />
-        </rollback>
+        </addColumn>
     </changeSet>
 
 </databaseChangeLog>

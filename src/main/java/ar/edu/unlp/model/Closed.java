@@ -1,5 +1,7 @@
 package ar.edu.unlp.model;
 
+import java.util.Date;
+
 public class Closed implements StateOperations {
 
     @Override
@@ -20,6 +22,12 @@ public class Closed implements StateOperations {
     @Override
     public void closed(Run run) {
 
+    }
+
+    @Override
+    public Integer time(Run run) {
+        Long time = (run.getEnd().getTime() - run.getStart().getTime()) / 1000;
+        return time.intValue();
     }
 
 }
