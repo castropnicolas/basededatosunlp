@@ -70,7 +70,17 @@ public class RunController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok().body(runDTO);
+    }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> get(@PathVariable String id) {
+        RunDTO runDTO = null;
+        try {
+            runDTO = this.getRunService().findById(id);
+        } catch (RunUnknownException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok().body(runDTO);
     }
 
 }

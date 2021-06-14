@@ -96,6 +96,13 @@ public class Company {
         return user;
     }
 
+    public Run findById(String id) throws RunUnknownException {
+        Optional<Run> optionalRun = this.getRunRepository().findById(id);
+        if (!optionalRun.isPresent())
+            throw new RunUnknownException();
+        return optionalRun.get();
+    }
+
     public void deleteByUsername(String username) throws UserUnknownException {
         Long amount = this.getUserRepository().deleteByUsername(username);
         if (amount == 0) throw new UserUnknownException();
@@ -110,27 +117,27 @@ public class Company {
     }
 
     public Run pausedRun(String anId) throws RunUnknownException {
-        Optional<Run> aRun = getRunRepository().findById(anId);
-        if (!aRun.isPresent())
+        Optional<Run> optionalRun = getRunRepository().findById(anId);
+        if (!optionalRun.isPresent())
             throw new RunUnknownException();
-        aRun.get().paused();
-        return aRun.get();
+        optionalRun.get().paused();
+        return optionalRun.get();
     }
 
     public Run activeRun(String anId) throws RunUnknownException {
-        Optional<Run> aRun = getRunRepository().findById(anId);
-        if (!aRun.isPresent())
+        Optional<Run> optionalRun = getRunRepository().findById(anId);
+        if (!optionalRun.isPresent())
             throw new RunUnknownException();
-        aRun.get().active();
-        return aRun.get();
+        optionalRun.get().active();
+        return optionalRun.get();
     }
 
     public Run closedRun(String anId) throws RunUnknownException {
-        Optional<Run> aRun = getRunRepository().findById(anId);
-        if (!aRun.isPresent())
+        Optional<Run> optionalRun = getRunRepository().findById(anId);
+        if (!optionalRun.isPresent())
             throw new RunUnknownException();
-        aRun.get().closed();
-        return aRun.get();
+        optionalRun.get().closed();
+        return optionalRun.get();
     }
 
     private UserRepository getUserRepository() {

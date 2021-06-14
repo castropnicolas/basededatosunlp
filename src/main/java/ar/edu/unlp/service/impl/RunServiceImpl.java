@@ -3,7 +3,6 @@ package ar.edu.unlp.service.impl;
 import ar.edu.unlp.dto.DTOFactory;
 import ar.edu.unlp.dto.RunDTO;
 import ar.edu.unlp.exceptions.RunUnknownException;
-import ar.edu.unlp.exceptions.UserUnknownException;
 import ar.edu.unlp.model.Company;
 import ar.edu.unlp.model.Run;
 import ar.edu.unlp.repository.CompanyRepository;
@@ -39,22 +38,29 @@ public class RunServiceImpl implements IRunService {
     @Override
     public RunDTO pausedRun(String id) throws RunUnknownException {
         Company company = this.getCompanyRepository().findFirstByOrderById();
-        Run newRun = company.pausedRun(id);
-        return this.getDtoFactory().createRunDTO(newRun);
+        Run aRun = company.pausedRun(id);
+        return this.getDtoFactory().createRunDTO(aRun);
     }
 
     @Override
     public RunDTO activeRun(String id) throws RunUnknownException {
         Company company = this.getCompanyRepository().findFirstByOrderById();
-        Run newRun = company.activeRun(id);
-        return this.getDtoFactory().createRunDTO(newRun);
+        Run aRun = company.activeRun(id);
+        return this.getDtoFactory().createRunDTO(aRun);
     }
 
     @Override
     public RunDTO closedRun(String id) throws RunUnknownException {
         Company company = this.getCompanyRepository().findFirstByOrderById();
-        Run newRun = company.closedRun(id);
-        return this.getDtoFactory().createRunDTO(newRun);
+        Run aRun = company.closedRun(id);
+        return this.getDtoFactory().createRunDTO(aRun);
+    }
+
+    @Override
+    public RunDTO findById(String id) throws RunUnknownException {
+        Company company = this.getCompanyRepository().findFirstByOrderById();
+        Run aRun = company.findById(id);
+        return this.getDtoFactory().createRunDTO(aRun);
     }
 
     public UserRepository getUserRepository() {
