@@ -74,6 +74,12 @@ public class Company {
         }
     }
 
+    public Run addRun() {
+        Run newRun = new Run();
+        this.getRuns().add(newRun);
+        return newRun;
+    }
+
     public void addRun(Run run) {
         this.getRuns().add(run);
     }

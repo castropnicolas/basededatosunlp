@@ -58,7 +58,6 @@ public class UserController {
             this.getUsersService().deleteByUsername(username);
         } catch (UserUnknownException e) {
             response.put("mensaje", "Nombre de usuario inexistente.");
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
             return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
         }
         response.put("mensaje", "¡Usuario eliminado con éxito!");

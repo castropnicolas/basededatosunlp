@@ -1,5 +1,6 @@
 package ar.edu.unlp.dto;
 
+import ar.edu.unlp.model.Run;
 import ar.edu.unlp.model.User;
 
 public class DTOFactory {
@@ -19,6 +20,10 @@ public class DTOFactory {
 
     public UserDTO createUserDTO(User anUser) {
         return new UserDTO(anUser.getId(), anUser.getUsername(), anUser.getName());
+    }
+
+    public RunDTO createRunDTO(Run anRun) {
+        return new RunDTO(anRun.getId(), anRun.getStart());
     }
 
 }

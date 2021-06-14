@@ -11,9 +11,11 @@ public class Run {
     private Date end;
     private String state;
     private Collection<Location> locations;
+//    private PackageState state = new OrderedState();
 
     public Run() {
         this.setLocations(new ArrayList<>());
+        this.setStart(new Date());
     }
 
     public String getId() {
@@ -60,31 +62,4 @@ public class Run {
         this.getLocations().add(location);
     }
 
-    /* public Integer speed() {
-        return null;
-    }
-
-    public Integer distance() {
-        return null;
-    }
-
-    public Integer duration() {
-        return null;
-    }
-
-    public Integer speedAverage() {
-        return null;
-    }
-
-    public Integer speedMinimum() {
-        return null;
-    }
-
-    public Integer speedMaximum() {
-        return null;
-    }
-
-    public Integer ranking() {
-        return null;
-    }*/
 }
