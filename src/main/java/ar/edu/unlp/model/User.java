@@ -1,6 +1,8 @@
 package ar.edu.unlp.model;
 
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 
 public class User {
 
@@ -9,9 +11,10 @@ public class User {
     private String password;
     private String name;
     private Date createdAt;
+    protected Collection<Run> runs;
 
     public User() {
-
+        this.setRuns(new HashSet<>());
     }
 
     public User(String anUsername, String aPassword, String aName) {
@@ -58,5 +61,18 @@ public class User {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Collection<Run> getRuns() {
+        return runs;
+    }
+
+    public void setRuns(Collection<Run> runs) {
+        this.runs = runs;
+    }
+
+    public void addRun(Run newRun) {
+        this.getRuns().add(newRun);
+
     }
 }

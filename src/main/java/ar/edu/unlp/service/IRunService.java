@@ -22,4 +22,6 @@ public interface IRunService {
 
     LocationDTO addLocation(String idRun, Double aLongitude, Double aLatitude);
 
+    RunDTO addRun(String idUser) throws Exception;
+
 }

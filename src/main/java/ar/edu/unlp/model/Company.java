@@ -86,10 +86,6 @@ public class Company {
         return newRun;
     }
 
-    public void addRun(Run run) {
-        this.getRuns().add(run);
-    }
-
     public User findByUsername(String username) throws UserUnknownException {
         User user = this.getUserRepository().findByUsername(username);
         if (user == null)
@@ -146,6 +142,20 @@ public class Company {
         Location newLocation = new Location(aLongitude, aLatitude);
         optionalRun.get().addLocation(newLocation);
         return newLocation;
+    }
+
+  /*  public Run addRunToUser(String idUser) {
+        Run newRun = new Run();
+        this.getRuns().add(newRun);
+        Optional<User> user = getUserRepository().findById(idUser);
+        user.get().addRun(newRun);
+        return newRun;
+    }*/
+
+    public Run addRunToUser(User anUser) {
+        Run newRun = new Run();
+        anUser.addRun(newRun);
+        return newRun;
     }
 
     private UserRepository getUserRepository() {

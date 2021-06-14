@@ -2,16 +2,15 @@ package ar.edu.unlp.api;
 
 import ar.edu.unlp.dto.LocationDTO;
 import ar.edu.unlp.dto.RunDTO;
+import ar.edu.unlp.dto.UserDTO;
 import ar.edu.unlp.exceptions.RunUnknownException;
 import ar.edu.unlp.service.IRunService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.util.Collection;
 
 @RestController
@@ -24,13 +23,19 @@ public class RunController {
         this.runService = runService;
     }
 
+    public IRunService getRunService() {
+        return runService;
+    }
+
     @GetMapping("/create")
     public void createRun() throws Exception {
         this.getRunService().addRun();
     }
 
-    public IRunService getRunService() {
-        return runService;
+    @PostMapping("/create")
+    public ResponseEntity<?> create(String idUser) throws Exception {
+        RunDTO runDTO = this.getRunService().addRun(idUser);
+        return ResponseEntity.status(HttpStatus.CREATED).body(runDTO);
     }
 
     @GetMapping("/all")
