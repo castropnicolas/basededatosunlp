@@ -10,7 +10,13 @@
         </id>
         <property name="start" column="start" type="timestamp"/>
         <property name="end" column="end" type="timestamp"/>
-        <property name="state" column="state" type="string"/>
+<!--        <property name="state" column="state" type="string"/>-->
+        <property name="state" column="state">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">ar.edu.unlp.model.State</param>
+                <param name="useNamed">true</param>
+            </type>
+        </property>
         <bag name="locations" lazy="extra" cascade="all">
             <key column="run_id" not-null="false"/>
             <one-to-many class="ar.edu.unlp.model.Location"/>

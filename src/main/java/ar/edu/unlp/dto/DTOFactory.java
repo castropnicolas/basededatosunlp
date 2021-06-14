@@ -23,7 +23,7 @@ public class DTOFactory {
     }
 
     public RunDTO createRunDTO(Run anRun) {
-        return new RunDTO(anRun.getId(), anRun.getStart());
+        return new RunDTO(anRun.getId(), anRun.getStart(), anRun.getState());
     }
 
 }

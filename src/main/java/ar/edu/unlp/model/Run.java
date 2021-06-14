@@ -9,9 +9,8 @@ public class Run {
     private String id;
     private Date start;
     private Date end;
-    private String state;
     private Collection<Location> locations;
-//    private PackageState state = new OrderedState();
+    private State state = State.CREATED;
 
     public Run() {
         this.setLocations(new ArrayList<>());
@@ -42,14 +41,6 @@ public class Run {
         this.end = end;
     }
 
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
     public Collection<Location> getLocations() {
         return locations;
     }
@@ -62,4 +53,23 @@ public class Run {
         this.getLocations().add(location);
     }
 
+    public State getState() {
+        return state;
+    }
+
+    public void setState(State state) {
+        this.state = state;
+    }
+
+/*    public void previousState() {
+        state.prev(this);
+    }
+
+    public void nextState() {
+        state.next(this);
+    }
+
+    public void printStatus() {
+        state.printStatus();
+    }*/
 }
