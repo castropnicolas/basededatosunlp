@@ -17,24 +17,24 @@ import java.util.Collection;
 @Transactional
 public class UserServiceImpl implements IUserService {
 
-    public UserServiceImpl(UserRepository userRepository, RunningAppRepository companyRepository, RunRepository runRepository, LocationRepository locationRepository) {
+    public UserServiceImpl(UserRepository userRepository, RunningAppRepository RunningAppRepository, RunRepository runRepository, LocationRepository locationRepository) {
         RepositoryLocator.getInstance().setUserRepository(userRepository);
-        RepositoryLocator.getInstance().setCompanyRepository(companyRepository);
+        RepositoryLocator.getInstance().setRunningAppRepository(RunningAppRepository);
         RepositoryLocator.getInstance().setRunRepository(runRepository);
         RepositoryLocator.getInstance().setLocationRepository(locationRepository);
     }
 
     @Override
     public UserDTO addUser(String aName, String anUsername, String aPassword) throws Exception {
-        RunningApp company = this.getCompanyRepository().findFirstByOrderById();
-        User newUser = company.addUser(anUsername, aPassword, aName);
+        RunningApp RunningApp = this.getRunningAppRepository().findFirstByOrderById();
+        User newUser = RunningApp.addUser(anUsername, aPassword, aName);
         return this.getDtoFactory().createUserDTO(newUser);
     }
 
     @Override
     public Collection<UserDTO> getAllUsers() {
-        RunningApp company = this.getCompanyRepository().findFirstByOrderById();
-        Collection<User> users = company.getUsers();
+        RunningApp RunningApp = this.getRunningAppRepository().findFirstByOrderById();
+        Collection<User> users = RunningApp.getUsers();
         Collection<UserDTO> userDTOS = new ArrayList<>();
         users.forEach(anUser -> userDTOS.add(this.getDtoFactory().createUserDTO(anUser)));
         return userDTOS;
@@ -42,15 +42,15 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public UserDTO findByUsername(String username) throws UserUnknownException {
-        RunningApp company = this.getCompanyRepository().findFirstByOrderById();
-        User user = company.findByUsername(username);
+        RunningApp RunningApp = this.getRunningAppRepository().findFirstByOrderById();
+        User user = RunningApp.findByUsername(username);
         return this.getDtoFactory().createUserDTO(user);
     }
 
     @Override
     public UserDTO updateUser(String username, UserDTO userDTO) throws UserUnknownException {
-        RunningApp company = this.getCompanyRepository().findFirstByOrderById();
-        User user = company.findByUsername(username);
+        RunningApp RunningApp = this.getRunningAppRepository().findFirstByOrderById();
+        User user = RunningApp.findByUsername(username);
         if (userDTO.getUsername() != null) user.setUsername(userDTO.getUsername());
         if (userDTO.getName() != null) user.setName(userDTO.getName());
         return this.getDtoFactory().createUserDTO(user);
@@ -58,16 +58,18 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public void deleteById(String id) throws IllegalArgumentException {
-        RunningApp company = this.getCompanyRepository().findFirstByOrderById();
-        company.deleteUserById(id);
+        RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
+        runningApp.deleteUserById(id);
     }
 
-    public UserRepository getUserRepository() {
-        return RepositoryLocator.getInstance().getUserRepository();
+    @Override
+    public Integer numberOfUsers() {
+        RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
+        return runningApp.numberOfUsers();
     }
 
-    public RunningAppRepository getCompanyRepository() {
-        return RepositoryLocator.getInstance().getCompanyRepository();
+    public RunningAppRepository getRunningAppRepository() {
+        return RepositoryLocator.getInstance().getRunningAppRepository();
     }
 
     public DTOFactory getDtoFactory() {

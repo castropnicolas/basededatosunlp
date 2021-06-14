@@ -136,4 +136,8 @@ public class RunningApp {
         return RepositoryLocator.getInstance().getRunRepository();
     }
 
+    public Integer numberOfUsers() {
+        Long numberOfUsers = getRunRepository().count();
+        return numberOfUsers.intValue();
+    }
 }

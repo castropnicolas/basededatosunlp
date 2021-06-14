@@ -5,7 +5,7 @@ public class RepositoryLocator {
     private static RepositoryLocator instance;
 
     private UserRepository userRepository;
-    private RunningAppRepository companyRepository;
+    private RunningAppRepository runningAppRepository;
     private RunRepository runRepository;
     private LocationRepository locationRepository;
 
@@ -27,12 +27,12 @@ public class RepositoryLocator {
         this.userRepository = userRepository;
     }
 
-    public RunningAppRepository getCompanyRepository() {
-        return companyRepository;
+    public RunningAppRepository getRunningAppRepository() {
+        return runningAppRepository;
     }
 
-    public void setCompanyRepository(RunningAppRepository companyRepository) {
-        this.companyRepository = companyRepository;
+    public void setRunningAppRepository(RunningAppRepository runningAppRepository) {
+        this.runningAppRepository = runningAppRepository;
     }
 
     public RunRepository getRunRepository() {

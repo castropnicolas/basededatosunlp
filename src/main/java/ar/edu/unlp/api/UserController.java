@@ -72,6 +72,11 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userDTO);
     }
 
+    @GetMapping("/numberOfUsers")
+    public Integer numberOfUsers() {
+        return this.getUsersService().numberOfUsers();
+    }
+
     public IUserService getUsersService() {
         return this.usersService;
     }

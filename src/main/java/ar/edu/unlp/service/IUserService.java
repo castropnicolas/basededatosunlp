@@ -17,4 +17,6 @@ public interface IUserService {
 
     void deleteById(String id) throws IllegalArgumentException;
 
+    Integer numberOfUsers();
+
 }

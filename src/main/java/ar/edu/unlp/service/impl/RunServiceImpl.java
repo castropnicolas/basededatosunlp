@@ -25,8 +25,8 @@ public class RunServiceImpl implements IRunService {
 
     @Override
     public Collection<RunDTO> getAllRuns() {
-        RunningApp company = this.getCompanyRepository().findFirstByOrderById();
-        Collection<Run> runs = company.getRuns();
+        RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
+        Collection<Run> runs = runningApp.getRuns();
         Collection<RunDTO> runDTOS = new ArrayList<>();
         runs.forEach(anRun -> runDTOS.add(this.getDtoFactory().createRunDTO(anRun)));
         return runDTOS;
@@ -34,50 +34,50 @@ public class RunServiceImpl implements IRunService {
 
     @Override
     public RunDTO pausedRun(String id) throws RunUnknownException {
-        RunningApp company = this.getCompanyRepository().findFirstByOrderById();
-        Run aRun = company.pausedRun(id);
+        RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
+        Run aRun = runningApp.pausedRun(id);
         return this.getDtoFactory().createRunDTO(aRun);
     }
 
     @Override
     public RunDTO activeRun(String id) throws RunUnknownException {
-        RunningApp company = this.getCompanyRepository().findFirstByOrderById();
-        Run aRun = company.activeRun(id);
+        RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
+        Run aRun = runningApp.activeRun(id);
         return this.getDtoFactory().createRunDTO(aRun);
     }
 
     @Override
     public RunDTO closedRun(String id) throws RunUnknownException {
-        RunningApp company = this.getCompanyRepository().findFirstByOrderById();
-        Run aRun = company.closedRun(id);
+        RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
+        Run aRun = runningApp.closedRun(id);
         return this.getDtoFactory().createRunDTO(aRun);
     }
 
     @Override
     public RunDTO findById(String id) throws RunUnknownException {
-        RunningApp company = this.getCompanyRepository().findFirstByOrderById();
-        Run aRun = company.findById(id);
+        RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
+        Run aRun = runningApp.findById(id);
         return this.getDtoFactory().createRunDTO(aRun);
     }
 
     @Override
     public LocationDTO addLocation(String idRun, Double aLongitude, Double aLatitude) {
-        RunningApp company = this.getCompanyRepository().findFirstByOrderById();
-        Location newLocation = company.addLocationToRun(idRun, aLongitude, aLatitude);
+        RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
+        Location newLocation = runningApp.addLocationToRun(idRun, aLongitude, aLatitude);
         return this.getDtoFactory().createLocationDTO(newLocation);
     }
 
     @Override
     public RunDTO addRun(String idUser) {
-        RunningApp company = this.getCompanyRepository().findFirstByOrderById();
+        RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
         Optional<User> anUser = getUserRepository().findById(idUser);
-        Run aRun = company.addRunToUser(anUser.get());
+        Run aRun = runningApp.addRunToUser(anUser.get());
         return this.getDtoFactory().createRunDTO(aRun);
 
     }
 
-    public RunningAppRepository getCompanyRepository() {
-        return RepositoryLocator.getInstance().getCompanyRepository();
+    public RunningAppRepository getRunningAppRepository() {
+        return RepositoryLocator.getInstance().getRunningAppRepository();
     }
 
     public UserRepository getUserRepository() {
