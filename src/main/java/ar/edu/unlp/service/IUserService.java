@@ -1,7 +1,7 @@
 package ar.edu.unlp.service;
 
 import ar.edu.unlp.dto.UserDTO;
-import ar.edu.unlp.model.UserUnknownException;
+import ar.edu.unlp.exceptions.UserUnknownException;
 
 import java.util.Collection;
 

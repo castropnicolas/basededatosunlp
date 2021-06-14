@@ -2,8 +2,8 @@ spring:
   application:
     name: basededatos-unlp
   datasource:
-    #url: jdbc:mysql://docker-mysql:3306/basededatosunlp?serverTimezone=
-    url: jdbc:mysql://localhost:3306/basededatosunlp?serverTimezone=UTC-3
+    #url: jdbc:mysql://docker-mysql:3306/basededatosunlp?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/basededatosunlp?serverTimezone
     username: root
     #password: root
     password:

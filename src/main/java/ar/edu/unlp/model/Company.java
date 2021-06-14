@@ -1,11 +1,16 @@
 package ar.edu.unlp.model;
 
+import ar.edu.unlp.exceptions.RunUnknownException;
+import ar.edu.unlp.exceptions.UserUnknownException;
+import ar.edu.unlp.exceptions.UsernameNotUniqueException;
 import ar.edu.unlp.repository.RepositoryLocator;
+import ar.edu.unlp.repository.RunRepository;
 import ar.edu.unlp.repository.UserRepository;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Optional;
 
 public class Company {
 
@@ -84,10 +89,6 @@ public class Company {
         this.getRuns().add(run);
     }
 
-    private UserRepository getUserRepository() {
-        return RepositoryLocator.getInstance().getUserRepository();
-    }
-
     public User findByUsername(String username) throws UserUnknownException {
         User user = this.getUserRepository().findByUsername(username);
         if (user == null)
@@ -106,5 +107,37 @@ public class Company {
         } catch (IllegalArgumentException i) {
             throw new IllegalArgumentException("Id de usuario inválido");
         }
+    }
+
+    public Run pausedRun(String anId) throws RunUnknownException {
+        Optional<Run> aRun = getRunRepository().findById(anId);
+        if (!aRun.isPresent())
+            throw new RunUnknownException();
+        aRun.get().paused();
+        return aRun.get();
+    }
+
+    public Run activeRun(String anId) throws RunUnknownException {
+        Optional<Run> aRun = getRunRepository().findById(anId);
+        if (!aRun.isPresent())
+            throw new RunUnknownException();
+        aRun.get().active();
+        return aRun.get();
+    }
+
+    public Run closedRun(String anId) throws RunUnknownException {
+        Optional<Run> aRun = getRunRepository().findById(anId);
+        if (!aRun.isPresent())
+            throw new RunUnknownException();
+        aRun.get().closed();
+        return aRun.get();
+    }
+
+    private UserRepository getUserRepository() {
+        return RepositoryLocator.getInstance().getUserRepository();
+    }
+
+    private RunRepository getRunRepository() {
+        return RepositoryLocator.getInstance().getRunRepository();
     }
 }

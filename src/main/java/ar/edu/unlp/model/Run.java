@@ -10,7 +10,7 @@ public class Run {
     private Date start;
     private Date end;
     private Collection<Location> locations;
-    private State state = State.CREATED;
+    private State state = State.ACTIVE;
 
     public Run() {
         this.setLocations(new ArrayList<>());
@@ -59,6 +59,18 @@ public class Run {
 
     public void setState(State state) {
         this.state = state;
+    }
+
+    public void paused() {
+        state.paused(this);
+    }
+
+    public void active() {
+        state.active(this);
+    }
+
+    public void closed() {
+        state.closed(this);
     }
 
 /*    public void previousState() {

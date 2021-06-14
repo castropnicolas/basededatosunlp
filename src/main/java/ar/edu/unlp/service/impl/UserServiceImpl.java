@@ -4,9 +4,10 @@ import ar.edu.unlp.dto.DTOFactory;
 import ar.edu.unlp.dto.UserDTO;
 import ar.edu.unlp.model.Company;
 import ar.edu.unlp.model.User;
-import ar.edu.unlp.model.UserUnknownException;
+import ar.edu.unlp.exceptions.UserUnknownException;
 import ar.edu.unlp.repository.CompanyRepository;
 import ar.edu.unlp.repository.RepositoryLocator;
+import ar.edu.unlp.repository.RunRepository;
 import ar.edu.unlp.repository.UserRepository;
 import ar.edu.unlp.service.IUserService;
 import org.springframework.stereotype.Service;
@@ -19,9 +20,10 @@ import java.util.Collection;
 @Transactional
 public class UserServiceImpl implements IUserService {
 
-    public UserServiceImpl(UserRepository userRepository, CompanyRepository companyRepository) {
+    public UserServiceImpl(UserRepository userRepository, CompanyRepository companyRepository, RunRepository runRepository) {
         RepositoryLocator.getInstance().setUserRepository(userRepository);
         RepositoryLocator.getInstance().setCompanyRepository(companyRepository);
+        RepositoryLocator.getInstance().setRunRepository(runRepository);
     }
 
     @Override

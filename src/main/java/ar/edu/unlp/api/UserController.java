@@ -1,7 +1,7 @@
 package ar.edu.unlp.api;
 
 import ar.edu.unlp.dto.UserDTO;
-import ar.edu.unlp.model.UserUnknownException;
+import ar.edu.unlp.exceptions.UserUnknownException;
 import ar.edu.unlp.service.IUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

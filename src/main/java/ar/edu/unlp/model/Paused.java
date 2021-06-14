@@ -1,6 +1,6 @@
 package ar.edu.unlp.model;
 
-public class Active implements StateOperations {
+public class Paused implements StateOperations {
 
     @Override
     public void printStatus() {
@@ -9,7 +9,7 @@ public class Active implements StateOperations {
 
     @Override
     public void paused(Run run) {
-        run.setState(State.PAUSED);
+
     }
 
     @Override
@@ -21,5 +21,4 @@ public class Active implements StateOperations {
     public void closed(Run run) {
         run.setState(State.CLOSED);
     }
-
 }

@@ -2,9 +2,11 @@ package ar.edu.unlp.model;
 
 public interface StateOperations {
 
-    void next(Run run);
-
-    void prev(Run run);
-
     void printStatus();
+
+    void paused(Run run);
+
+    void active(Run run);
+
+    void closed(Run run);
 }
