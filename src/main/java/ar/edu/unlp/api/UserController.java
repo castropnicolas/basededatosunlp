@@ -29,7 +29,7 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> create(@Valid @RequestBody UserDTO userDTO) throws Exception {
+    public ResponseEntity<?> create(@RequestBody @Valid UserDTO userDTO) throws Exception {
         this.getUsersService().addUser(userDTO.getName(), userDTO.getUsername(), "notevoyadecirmiclave");
         return ResponseEntity.status(HttpStatus.CREATED).body(userDTO);
     }

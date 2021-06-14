@@ -27,13 +27,13 @@ public class RunController {
         return runService;
     }
 
-    @GetMapping("/create")
+   /* @GetMapping("/create")
     public void createRun() throws Exception {
         this.getRunService().addRun();
-    }
+    }*/
 
     @PostMapping("/create")
-    public ResponseEntity<?> create(String idUser) throws Exception {
+    public ResponseEntity<?> create(@RequestParam("idUser")  String idUser) throws Exception {
         RunDTO runDTO = this.getRunService().addRun(idUser);
         return ResponseEntity.status(HttpStatus.CREATED).body(runDTO);
     }

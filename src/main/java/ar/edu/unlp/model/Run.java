@@ -16,6 +16,7 @@ public class Run {
     public Run() {
         this.setLocations(new ArrayList<>());
         this.setStart(new Date());
+        this.addLocation(new Location());
     }
 
     public String getId() {

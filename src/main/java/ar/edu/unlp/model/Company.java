@@ -144,14 +144,6 @@ public class Company {
         return newLocation;
     }
 
-  /*  public Run addRunToUser(String idUser) {
-        Run newRun = new Run();
-        this.getRuns().add(newRun);
-        Optional<User> user = getUserRepository().findById(idUser);
-        user.get().addRun(newRun);
-        return newRun;
-    }*/
-
     public Run addRunToUser(User anUser) {
         Run newRun = new Run();
         anUser.addRun(newRun);

@@ -6,6 +6,8 @@ public class Location {
     private Double longitude;
 
     public Location(){
+        this.setLongitude(0D);
+        this.setLatitude(0D);
 
     }
 
