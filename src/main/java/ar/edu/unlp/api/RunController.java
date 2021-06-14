@@ -1,5 +1,6 @@
 package ar.edu.unlp.api;
 
+import ar.edu.unlp.dto.LocationDTO;
 import ar.edu.unlp.dto.RunDTO;
 import ar.edu.unlp.exceptions.RunUnknownException;
 import ar.edu.unlp.service.IRunService;
@@ -81,6 +82,13 @@ public class RunController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok().body(runDTO);
+    }
+
+    @GetMapping("/createLocation/{id}")
+    public ResponseEntity<?> createLocation(@PathVariable String id) {
+        LocationDTO locationDTO = null;
+        locationDTO = this.getRunService().addLocation(id, 10D, 15D);
+        return ResponseEntity.ok().body(locationDTO);
     }
 
 }

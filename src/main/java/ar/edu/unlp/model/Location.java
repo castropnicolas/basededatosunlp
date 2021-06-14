@@ -5,6 +5,15 @@ public class Location {
     private Double latitude;
     private Double longitude;
 
+    public Location(){
+
+    }
+
+    public Location(Double anLatitude, Double anLongitude){
+        this.setLatitude(anLatitude);
+        this.setLongitude(anLongitude);
+    }
+
     public String getId() {
         return id;
     }

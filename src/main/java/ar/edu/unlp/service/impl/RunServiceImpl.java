@@ -1,9 +1,11 @@
 package ar.edu.unlp.service.impl;
 
 import ar.edu.unlp.dto.DTOFactory;
+import ar.edu.unlp.dto.LocationDTO;
 import ar.edu.unlp.dto.RunDTO;
 import ar.edu.unlp.exceptions.RunUnknownException;
 import ar.edu.unlp.model.Company;
+import ar.edu.unlp.model.Location;
 import ar.edu.unlp.model.Run;
 import ar.edu.unlp.repository.CompanyRepository;
 import ar.edu.unlp.repository.RepositoryLocator;
@@ -61,6 +63,13 @@ public class RunServiceImpl implements IRunService {
         Company company = this.getCompanyRepository().findFirstByOrderById();
         Run aRun = company.findById(id);
         return this.getDtoFactory().createRunDTO(aRun);
+    }
+
+    @Override
+    public LocationDTO addLocation(String idRun, Double aLongitude, Double aLatitude) {
+        Company company = this.getCompanyRepository().findFirstByOrderById();
+        Location newLocation = company.addLocationToRun(idRun, aLongitude, aLatitude);
+        return this.getDtoFactory().createLocationDTO(newLocation);
     }
 
     public UserRepository getUserRepository() {

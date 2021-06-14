@@ -12,7 +12,7 @@
 	<groupId>ar.edu.unlp</groupId>
 	<artifactId>basededatosunlp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
+	<name>basededatosunlp</name>
 	<description>Project for Database UNLP</description>
 
 	<properties>

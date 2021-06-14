@@ -3,6 +3,7 @@ package ar.edu.unlp.model;
 import ar.edu.unlp.exceptions.RunUnknownException;
 import ar.edu.unlp.exceptions.UserUnknownException;
 import ar.edu.unlp.exceptions.UsernameNotUniqueException;
+import ar.edu.unlp.repository.LocationRepository;
 import ar.edu.unlp.repository.RepositoryLocator;
 import ar.edu.unlp.repository.RunRepository;
 import ar.edu.unlp.repository.UserRepository;
@@ -132,12 +133,19 @@ public class Company {
         return optionalRun.get();
     }
 
-    public Run closedRun(String anId) throws RunUnknownException {
-        Optional<Run> optionalRun = getRunRepository().findById(anId);
+    public Run closedRun(String idRun) throws RunUnknownException {
+        Optional<Run> optionalRun = getRunRepository().findById(idRun);
         if (!optionalRun.isPresent())
             throw new RunUnknownException();
         optionalRun.get().closed();
         return optionalRun.get();
+    }
+
+    public Location addLocationToRun(String idRun, Double aLongitude, Double aLatitude) {
+        Optional<Run> optionalRun = getRunRepository().findById(idRun);
+        Location newLocation = new Location(aLongitude, aLatitude);
+        optionalRun.get().addLocation(newLocation);
+        return newLocation;
     }
 
     private UserRepository getUserRepository() {
@@ -146,5 +154,9 @@ public class Company {
 
     private RunRepository getRunRepository() {
         return RepositoryLocator.getInstance().getRunRepository();
+    }
+
+    private LocationRepository getLocationRepository() {
+        return RepositoryLocator.getInstance().getLocationRepository();
     }
 }
