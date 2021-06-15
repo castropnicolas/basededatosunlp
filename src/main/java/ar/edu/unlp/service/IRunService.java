@@ -14,8 +14,6 @@ public interface IRunService {
 
     RunDTO activeRun(String id) throws RunUnknownException;
 
-    RunDTO updateRun(String id, RunDTO runDTO) throws RunUnknownException;
-
     RunDTO closedRun(String id) throws RunUnknownException;
 
     RunDTO findById(String id) throws RunUnknownException;

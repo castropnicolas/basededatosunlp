@@ -1,7 +1,5 @@
 package ar.edu.unlp.model;
 
-import java.util.Date;
-
 public class Closed implements StateOperations {
 
     @Override

@@ -43,8 +43,8 @@ public class RunController {
         return ResponseEntity.ok().body(list);
     }
 
-
-    @GetMapping("/paused/{id}")
+    @PutMapping("/paused/{id}")
+    @ApiOperation("Pausar una carrera")
     public ResponseEntity<?> paused(@PathVariable String id) {
         RunDTO runDTO = null;
         try {
@@ -55,7 +55,8 @@ public class RunController {
         return ResponseEntity.ok().body(runDTO);
     }
 
-    @GetMapping("/closed/{id}")
+    @PutMapping("/closed/{id}")
+    @ApiOperation("Cerrar una carrera")
     public ResponseEntity<?> closed(@PathVariable String id) {
         RunDTO runDTO = null;
         try {
@@ -67,23 +68,12 @@ public class RunController {
 
     }
 
-    @GetMapping("/active/{id}")
+    @PutMapping("/active/{id}")
+    @ApiOperation("Activar una carrera")
     public ResponseEntity<?> active(@PathVariable String id) {
         RunDTO runDTO = null;
         try {
             runDTO = this.getRunService().activeRun(id);
-        } catch (RunUnknownException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
-        return ResponseEntity.ok().body(runDTO);
-    }
-
-    @PutMapping("/{id}")
-    @ApiOperation("Actualizar estado de una carrera (ACTIVE, PAUSED, CLOSED)")
-    public ResponseEntity<?> updateRun(@PathVariable String id, @RequestBody RunDTO dto) {
-        RunDTO runDTO = null;
-        try {
-            runDTO = this.getRunService().updateRun(id, dto);
         } catch (RunUnknownException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
@@ -102,7 +92,7 @@ public class RunController {
         return ResponseEntity.ok().body(runDTO);
     }
 
-    @GetMapping("/createLocation/{id}")
+    @PostMapping("/createLocation/{id}")
     @ApiOperation("Agregar ubicación a una carrera")
     public ResponseEntity<?> createLocation(@PathVariable String id, @RequestBody LocationDTO dto) {
         LocationDTO locationDTO = null;
