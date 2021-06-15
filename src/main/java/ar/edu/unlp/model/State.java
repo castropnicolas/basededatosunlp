@@ -28,11 +28,6 @@ public enum State implements StateOperations {
     }
 
     @Override
-    public void printStatus() {
-        operations.printStatus();
-    }
-
-    @Override
     public Integer time(Run run) {
         return operations.time(run);
     }

@@ -5,11 +5,6 @@ import java.util.Date;
 public class Active implements StateOperations {
 
     @Override
-    public void printStatus() {
-        System.out.println("Carrera actiava.");
-    }
-
-    @Override
     public void paused(Run run) {
         run.setState(State.PAUSED);
         run.setTime(time(run));
