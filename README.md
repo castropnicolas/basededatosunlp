@@ -12,22 +12,5 @@ mvn clean install
 docker-compose up --build
 docker-compose down <- down docker compose
 
-## Run insert script
-docker exec -it docker-mysql mysql -uroot -p
-INSERT INTO running_app(id) VALUES ('a4295f86-6cd0-4f48-acda-080005f3a558');
-
-## Check app application
-http://localhost:8080/user/all
-
-### Example POST /user/save
-curl -s -X POST \
-http://localhost:8080/user/create \
--H 'Content-Type: application/json' \
--d '{"username":"quito"}'
-
-### GET /user/{id}
-curl -s -X GET \
-http://localhost:8080/user/quito
-
 ### Access to swagger console
 http://localhost:8080/swagger-ui.html
