@@ -5,6 +5,7 @@ import ar.edu.unlp.dto.RunDTO;
 import ar.edu.unlp.dto.UserDTO;
 import ar.edu.unlp.exceptions.RunUnknownException;
 import ar.edu.unlp.service.IRunService;
+import io.swagger.annotations.Api;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,13 +28,8 @@ public class RunController {
         return runService;
     }
 
-   /* @GetMapping("/create")
-    public void createRun() throws Exception {
-        this.getRunService().addRun();
-    }*/
-
     @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestParam("idUser")  String idUser) throws Exception {
+    public ResponseEntity<?> create(@RequestParam("idUser") String idUser) throws Exception {
         RunDTO runDTO = this.getRunService().addRun(idUser);
         return ResponseEntity.status(HttpStatus.CREATED).body(runDTO);
     }

@@ -56,7 +56,7 @@ public class RunServiceImpl implements IRunService {
     @Override
     public RunDTO findById(String id) throws RunUnknownException {
         RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
-        Run aRun = runningApp.findById(id);
+        Run aRun = runningApp.findRunById(id);
         return this.getDtoFactory().createRunDTO(aRun);
     }
 

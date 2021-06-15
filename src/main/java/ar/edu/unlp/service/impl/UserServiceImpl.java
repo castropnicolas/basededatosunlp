@@ -26,15 +26,15 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public UserDTO addUser(String aName, String anUsername, String aPassword) throws Exception {
-        RunningApp RunningApp = this.getRunningAppRepository().findFirstByOrderById();
-        User newUser = RunningApp.addUser(anUsername, aPassword, aName);
+        RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
+        User newUser = runningApp.addUser(anUsername, aPassword, aName);
         return this.getDtoFactory().createUserDTO(newUser);
     }
 
     @Override
     public Collection<UserDTO> getAllUsers() {
-        RunningApp RunningApp = this.getRunningAppRepository().findFirstByOrderById();
-        Collection<User> users = RunningApp.getUsers();
+        RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
+        Collection<User> users = runningApp.getUsers();
         Collection<UserDTO> userDTOS = new ArrayList<>();
         users.forEach(anUser -> userDTOS.add(this.getDtoFactory().createUserDTO(anUser)));
         return userDTOS;
@@ -42,22 +42,22 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public UserDTO findByUsername(String username) throws UserUnknownException {
-        RunningApp RunningApp = this.getRunningAppRepository().findFirstByOrderById();
-        User user = RunningApp.findByUsername(username);
+        RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
+        User user = runningApp.findByUsername(username);
         return this.getDtoFactory().createUserDTO(user);
     }
 
     @Override
     public UserDTO updateUser(String username, UserDTO userDTO) throws UserUnknownException {
-        RunningApp RunningApp = this.getRunningAppRepository().findFirstByOrderById();
-        User user = RunningApp.findByUsername(username);
+        RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
+        User user = runningApp.findByUsername(username);
         if (userDTO.getUsername() != null) user.setUsername(userDTO.getUsername());
         if (userDTO.getName() != null) user.setName(userDTO.getName());
         return this.getDtoFactory().createUserDTO(user);
     }
 
     @Override
-    public void deleteById(String id) throws IllegalArgumentException {
+    public void deleteById(String id) throws UserUnknownException {
         RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
         runningApp.deleteUserById(id);
     }

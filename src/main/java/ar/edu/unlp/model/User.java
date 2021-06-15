@@ -11,7 +11,7 @@ public class User {
     private String password;
     private String name;
     private Date createdAt;
-    protected Collection<Run> runs;
+    private Collection<Run> runs;
 
     public User() {
         this.setRuns(new HashSet<>());

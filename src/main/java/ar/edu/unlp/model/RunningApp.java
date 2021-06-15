@@ -76,19 +76,18 @@ public class RunningApp {
         return user;
     }
 
-    public Run findById(String id) throws RunUnknownException {
+    public Run findRunById(String id) throws RunUnknownException {
         Optional<Run> optionalRun = this.getRunRepository().findById(id);
         if (!optionalRun.isPresent())
             throw new RunUnknownException();
         return optionalRun.get();
     }
 
-    public void deleteUserById(String id) throws IllegalArgumentException {
-        try {
-            this.getUserRepository().deleteById(id);
-        } catch (IllegalArgumentException i) {
-            throw new IllegalArgumentException("Id de usuario inválido");
-        }
+    public void deleteUserById(String id) throws UserUnknownException {
+        Optional<User> user = this.getUserRepository().findById(id);
+        if (!user.isPresent())
+            throw new UserUnknownException();
+        this.getUserRepository().delete(user.get());
     }
 
     public Run pausedRun(String anId) throws RunUnknownException {
@@ -137,7 +136,7 @@ public class RunningApp {
     }
 
     public Integer numberOfUsers() {
-        Long numberOfUsers = getRunRepository().count();
+        Long numberOfUsers = getUserRepository().count();
         return numberOfUsers.intValue();
     }
 }
