@@ -12,6 +12,10 @@
         <property name="password" column="password" type="string"/>
         <property name="name" column="name" type="string"/>
         <property name="createdAt" column="created_at" type="timestamp"/>
+        <bag name="runs" lazy="extra" cascade="all">
+            <key column="user_id" not-null="false"/>
+            <one-to-many class="ar.edu.unlp.model.Run"/>
+        </bag>
     </class>
 
 </hibernate-mapping>

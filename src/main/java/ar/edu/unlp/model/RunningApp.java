@@ -116,12 +116,13 @@ public class RunningApp {
 
     public Location addLocationToRun(String idRun, Double aLongitude, Double aLatitude) {
         Optional<Run> optionalRun = getRunRepository().findById(idRun);
-        Location newLocation = new Location(aLongitude, aLatitude);
+        Location newLocation = new Location(aLatitude, aLongitude);
         optionalRun.get().addLocation(newLocation);
         return newLocation;
     }
 
-    public Run addRunToUser(User anUser) {
+    public Run addRunToUser(String username) throws UserUnknownException {
+        User anUser = findByUsername(username);
         Run newRun = new Run();
         anUser.addRun(newRun);
         return newRun;

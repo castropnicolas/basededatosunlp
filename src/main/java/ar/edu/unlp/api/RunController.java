@@ -6,6 +6,7 @@ import ar.edu.unlp.dto.UserDTO;
 import ar.edu.unlp.exceptions.RunUnknownException;
 import ar.edu.unlp.service.IRunService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,16 +30,19 @@ public class RunController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestParam("idUser") String idUser) throws Exception {
-        RunDTO runDTO = this.getRunService().addRun(idUser);
+    @ApiOperation("Agregar una carrera, para un usuario existente")
+    public ResponseEntity<?> create(@RequestParam("username") String username) throws Exception {
+        RunDTO runDTO = this.getRunService().addRun(username);
         return ResponseEntity.status(HttpStatus.CREATED).body(runDTO);
     }
 
     @GetMapping("/all")
+    @ApiOperation("Listar todas las carreras")
     public ResponseEntity<?> list() {
         Collection<RunDTO> list = this.getRunService().getAllRuns();
         return ResponseEntity.ok().body(list);
     }
+
 
     @GetMapping("/paused/{id}")
     public ResponseEntity<?> paused(@PathVariable String id) {
@@ -74,7 +78,20 @@ public class RunController {
         return ResponseEntity.ok().body(runDTO);
     }
 
+    @PutMapping("/{id}")
+    @ApiOperation("Actualizar estado de una carrera (ACTIVE, PAUSED, CLOSED)")
+    public ResponseEntity<?> updateRun(@PathVariable String id, @RequestBody RunDTO dto) {
+        RunDTO runDTO = null;
+        try {
+            runDTO = this.getRunService().updateRun(id, dto);
+        } catch (RunUnknownException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok().body(runDTO);
+    }
+
     @GetMapping("/{id}")
+    @ApiOperation("Obtener información de una carrera a partir de su id")
     public ResponseEntity<?> get(@PathVariable String id) {
         RunDTO runDTO = null;
         try {
@@ -86,9 +103,10 @@ public class RunController {
     }
 
     @GetMapping("/createLocation/{id}")
-    public ResponseEntity<?> createLocation(@PathVariable String id) {
+    @ApiOperation("Agregar ubicación a una carrera")
+    public ResponseEntity<?> createLocation(@PathVariable String id, @RequestBody LocationDTO dto) {
         LocationDTO locationDTO = null;
-        locationDTO = this.getRunService().addLocation(id, 10D, 15D);
+        locationDTO = this.getRunService().addLocation(id, dto.getLatitude(), dto.getLongitude());
         return ResponseEntity.ok().body(locationDTO);
     }
 

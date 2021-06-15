@@ -21,7 +21,7 @@
             <column name="start" type="datetime" />
             <column name="end" type="datetime" />
             <column name="state" type="VARCHAR(255)" />
-            <column name="running_app_id" type="VARCHAR(255)" />
+            <column name="user_id" type="VARCHAR(255)" />
         </createTable>
         <rollback>
             <dropTable tableName="runs" />

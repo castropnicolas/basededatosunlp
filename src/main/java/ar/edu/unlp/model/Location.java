@@ -8,7 +8,6 @@ public class Location {
     public Location(){
         this.setLongitude(0D);
         this.setLatitude(0D);
-
     }
 
     public Location(Double anLatitude, Double anLongitude){

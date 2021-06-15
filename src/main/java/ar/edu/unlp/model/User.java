@@ -21,6 +21,7 @@ public class User {
         this.setUsername(anUsername);
         this.setName(aName);
         this.setPassword(aPassword);
+        this.setRuns(new HashSet<>());
     }
 
     public String getId() {
@@ -73,6 +74,5 @@ public class User {
 
     public void addRun(Run newRun) {
         this.getRuns().add(newRun);
-
     }
 }

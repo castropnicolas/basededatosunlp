@@ -14,12 +14,14 @@ public interface IRunService {
 
     RunDTO activeRun(String id) throws RunUnknownException;
 
+    RunDTO updateRun(String id, RunDTO runDTO) throws RunUnknownException;
+
     RunDTO closedRun(String id) throws RunUnknownException;
 
     RunDTO findById(String id) throws RunUnknownException;
 
-    LocationDTO addLocation(String idRun, Double aLongitude, Double aLatitude);
+    LocationDTO addLocation(String idRun, Double aLatitude, Double aLongitude);
 
-    RunDTO addRun(String idUser) throws Exception;
+    RunDTO addRun(String username) throws Exception;
 
 }
