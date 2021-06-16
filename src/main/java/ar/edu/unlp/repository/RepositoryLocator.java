@@ -7,7 +7,6 @@ public class RepositoryLocator {
     private UserRepository userRepository;
     private RunningAppRepository runningAppRepository;
     private RunRepository runRepository;
-    private LocationRepository locationRepository;
 
     private RepositoryLocator() {
     }
@@ -43,11 +42,4 @@ public class RepositoryLocator {
         this.runRepository = runRepository;
     }
 
-    public LocationRepository getLocationRepository() {
-        return locationRepository;
-    }
-
-    public void setLocationRepository(LocationRepository locationRepository) {
-        this.locationRepository = locationRepository;
-    }
 }

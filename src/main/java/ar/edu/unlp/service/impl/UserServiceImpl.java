@@ -17,11 +17,10 @@ import java.util.Collection;
 @Transactional
 public class UserServiceImpl implements IUserService {
 
-    public UserServiceImpl(UserRepository userRepository, RunningAppRepository RunningAppRepository, RunRepository runRepository, LocationRepository locationRepository) {
+    public UserServiceImpl(UserRepository userRepository, RunningAppRepository RunningAppRepository, RunRepository runRepository) {
         RepositoryLocator.getInstance().setUserRepository(userRepository);
         RepositoryLocator.getInstance().setRunningAppRepository(RunningAppRepository);
         RepositoryLocator.getInstance().setRunRepository(runRepository);
-        RepositoryLocator.getInstance().setLocationRepository(locationRepository);
     }
 
     @Override
