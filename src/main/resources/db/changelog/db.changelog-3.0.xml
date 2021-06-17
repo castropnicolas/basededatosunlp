@@ -14,10 +14,10 @@
     </changeSet>
 
     <changeSet id="6" author="nicolas">
-        <sqlFile dbms="mysql" path="db/changelog/sql/insert_company.sql"/>
-        <sqlFile dbms="mysql" path="db/changelog/sql/insert_users.sql"/>
-        <sqlFile dbms="mysql" path="db/changelog/sql/insert_runs.sql"/>
-        <sqlFile dbms="mysql" path="db/changelog/sql/insert_locations.sql"/>
+        <sqlFile dbms="postgresql" path="db/changelog/sql/insert_company.sql"/>
+        <sqlFile dbms="postgresql" path="db/changelog/sql/insert_users.sql"/>
+        <sqlFile dbms="postgresql" path="db/changelog/sql/insert_runs.sql"/>
+        <sqlFile dbms="postgresql" path="db/changelog/sql/insert_locations.sql"/>
     </changeSet>
 
 </databaseChangeLog>

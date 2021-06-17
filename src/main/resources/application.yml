@@ -2,11 +2,10 @@ spring:
   application:
     name: basededatos-unlp
   datasource:
-#    url: jdbc:mysql://docker-mysql:3306/basededatosunlp?serverTimezone=UTC
-    url: jdbc:mysql://localhost:3306/basededatosunlp?serverTimezone=UTC
-    username: root
-#    password: root
-    password:
+#    url: jdbc:postgresql://docker-postgresql:5432/basededatosunlp?serverTimezone=UTC
+    url: jdbc:postgresql://localhost:5432/basededatosunlp?serverTimezone=UTC&useUnicode=yes&characterEncoding=UTF-8
+    username: postgres
+    password: postgres
     testWhileIdle: true
     validationQuery: SELECT 1
   jpa:

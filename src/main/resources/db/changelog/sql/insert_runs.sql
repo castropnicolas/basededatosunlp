@@ -1,4 +1,4 @@
-INSERT INTO `runs` (`id`, `start`, `end`, `state`, `time`, `user_id`) VALUES
+INSERT INTO runs (id, start, "end", state, time, user_id) VALUES
 ('2c90f29b7a121aca017a1223b5000040', '2021-06-16 00:06:08', NULL, 'ACTIVE', NULL, 'bcdc51bb-ce1b-11eb-a4f5-d481d7fa9420'),
 ('2c90f29b7a121aca017a1223b5040042', '2021-06-16 00:06:08', NULL, 'ACTIVE', NULL, 'a2228124-ce1b-11eb-a4f5-d481d7fa9420'),
 ('2c90f29b7a121aca017a1223b5080044', '2021-06-16 00:06:08', NULL, 'ACTIVE', NULL, 'bcdc21e6-ce1b-11eb-a4f5-d481d7fa9420'),
