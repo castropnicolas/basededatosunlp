@@ -10,7 +10,7 @@ spring:
     testWhileIdle: true
     validationQuery: SELECT 1
   jpa:
-    properties.hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
+    properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
     mapping-resources:
       - mappings/User.hbm.xml
       - mappings/RunningApp.hbm.xml
