@@ -1,11 +1,11 @@
 package ar.edu.unlp.repository;
 
 import ar.edu.unlp.model.Run;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;
 
-public interface RunRepository extends JpaRepository<Run, String> {
+public interface RunRepository extends MongoRepository<Run, String> {
 
     Optional<Run> findById(String anId);
 

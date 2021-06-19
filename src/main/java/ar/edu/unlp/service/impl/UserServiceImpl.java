@@ -2,24 +2,25 @@ package ar.edu.unlp.service.impl;
 
 import ar.edu.unlp.dto.DTOFactory;
 import ar.edu.unlp.dto.UserDTO;
+import ar.edu.unlp.exceptions.UserUnknownException;
 import ar.edu.unlp.model.RunningApp;
 import ar.edu.unlp.model.User;
-import ar.edu.unlp.exceptions.UserUnknownException;
-import ar.edu.unlp.repository.*;
+import ar.edu.unlp.repository.RepositoryLocator;
+import ar.edu.unlp.repository.RunRepository;
+import ar.edu.unlp.repository.RunningAppRepository;
+import ar.edu.unlp.repository.UserRepository;
 import ar.edu.unlp.service.IUserService;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
 
 @Service
-@Transactional
 public class UserServiceImpl implements IUserService {
 
-    public UserServiceImpl(UserRepository userRepository, RunningAppRepository RunningAppRepository, RunRepository runRepository) {
+    public UserServiceImpl(UserRepository userRepository, RunningAppRepository runningAppRepository, RunRepository runRepository) {
         RepositoryLocator.getInstance().setUserRepository(userRepository);
-        RepositoryLocator.getInstance().setRunningAppRepository(RunningAppRepository);
+        RepositoryLocator.getInstance().setRunningAppRepository(runningAppRepository);
         RepositoryLocator.getInstance().setRunRepository(runRepository);
     }
 

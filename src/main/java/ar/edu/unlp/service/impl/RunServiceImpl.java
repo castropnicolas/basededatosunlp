@@ -14,12 +14,10 @@ import ar.edu.unlp.repository.RunningAppRepository;
 import ar.edu.unlp.service.IRunService;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
 
 @Service
-@Transactional
 public class RunServiceImpl implements IRunService {
 
     @Override

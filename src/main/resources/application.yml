@@ -1,14 +1,11 @@
 spring:
   application:
     name: basededatos-unlp
-  datasource:
-    url: jdbc:postgresql://docker-postgres:5432/basededatosunlp?serverTimezone=UTC&useUnicode=yes&characterEncoding=UTF-8
-    username: postgres
-    password: postgres
-    testWhileIdle: true
-    validationQuery: SELECT 1
+  data:
+    mongodb:
+      database: basededatosunlp
+      uri: mongodb://localhost:27017
   jpa:
-    properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
     mapping-resources:
       - mappings/User.hbm.xml
       - mappings/RunningApp.hbm.xml
@@ -18,3 +15,10 @@ spring:
     hibernate.ddl-auto: none
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.xml
+
+
+#spring.data.mongodb:
+#  database: customers # Database name.
+#  uri: mongodb://mongo:27017 # Mongo database URI. Cannot be set with host, port and credentials.
+
+#spring.data.mongodb.uri=mongodb://root:root@localhost:27017/test_db
