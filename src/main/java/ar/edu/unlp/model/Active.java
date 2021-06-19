@@ -21,4 +21,11 @@ public class Active implements StateOperations {
         run.setEnd(new Date());
     }
 
+    @Override
+    public Integer time(Run run) {
+        Date currentTime = new Date();
+        Long time = (currentTime.getTime() - run.getStart().getTime()) / 1000;
+        return time.intValue();
+    }
+
 }

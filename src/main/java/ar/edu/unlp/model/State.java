@@ -27,4 +27,9 @@ public enum State implements StateOperations {
         operations.closed(run);
     }
 
+    @Override
+    public Integer time(Run run) {
+        return operations.time(run);
+    }
+
 }

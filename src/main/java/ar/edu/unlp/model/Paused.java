@@ -20,4 +20,10 @@ public class Paused implements StateOperations {
         run.setEnd(new Date());
     }
 
+    @Override
+    public Integer time(Run run) {
+        Long time = (run.getEnd().getTime() - run.getStart().getTime()) / 1000;
+        return time.intValue();
+    }
+
 }

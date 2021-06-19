@@ -75,9 +75,7 @@ public class Run {
     }
 
     public Integer time() {
-        Date currentTime = new Date();
-        Long time = (currentTime.getTime() - this.getStart().getTime()) / 1000;
-        return time.intValue();
+        return state.time(this);
     }
 
 }

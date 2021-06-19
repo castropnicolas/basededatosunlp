@@ -17,4 +17,9 @@ public class Closed implements StateOperations {
 
     }
 
+    @Override
+    public Integer time(Run run) {
+        Long time = (run.getEnd().getTime() - run.getStart().getTime()) / 1000;
+        return time.intValue();
+    }
 }
