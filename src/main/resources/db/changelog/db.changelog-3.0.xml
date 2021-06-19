@@ -14,7 +14,7 @@
     </changeSet>
 
     <changeSet id="6" author="nicolas">
-        <sqlFile dbms="postgresql" path="db/changelog/sql/insert_company.sql"/>
+        <sqlFile dbms="postgresql" path="db/changelog/sql/insert_running_app.sql"/>
         <sqlFile dbms="postgresql" path="db/changelog/sql/insert_users.sql"/>
         <sqlFile dbms="postgresql" path="db/changelog/sql/insert_runs.sql"/>
         <sqlFile dbms="postgresql" path="db/changelog/sql/insert_locations.sql"/>
