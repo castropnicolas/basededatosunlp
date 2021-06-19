@@ -7,7 +7,7 @@ public class Active implements StateOperations {
     @Override
     public void paused(Run run) {
         run.setState(State.PAUSED);
-        run.setTime(time(run));
+        run.setEnd(new Date());
     }
 
     @Override

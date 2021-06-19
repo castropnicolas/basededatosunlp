@@ -9,7 +9,6 @@ public class Run {
     private String id;
     private Date start;
     private Date end;
-    private Integer time;
     private Collection<Location> locations;
     private State state = State.ACTIVE;
 
@@ -63,14 +62,6 @@ public class Run {
         this.state = state;
     }
 
-    public Integer getTime() {
-        return time;
-    }
-
-    public void setTime(Integer time) {
-        this.time = time;
-    }
-
     public void paused() {
         state.paused(this);
     }
@@ -84,8 +75,7 @@ public class Run {
     }
 
     public Integer time() {
-        Integer time = state.time(this);
-        return time;
+        return state.time(this);
     }
 
 }

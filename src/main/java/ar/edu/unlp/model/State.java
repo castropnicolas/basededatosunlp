@@ -31,4 +31,5 @@ public enum State implements StateOperations {
     public Integer time(Run run) {
         return operations.time(run);
     }
+
 }
