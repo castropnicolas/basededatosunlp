@@ -11,17 +11,13 @@ public class Paused implements StateOperations {
     @Override
     public void active(Run run) {
         run.setState(State.ACTIVE);
-        run.setTime(null);
+        run.setEnd(null);
     }
 
     @Override
     public void closed(Run run) {
-        run.setEnd(new Date());
         run.setState(State.CLOSED);
+        run.setEnd(new Date());
     }
 
-    @Override
-    public Integer time(Run run) {
-        return run.getTime();
-    }
 }

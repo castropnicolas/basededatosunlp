@@ -8,5 +8,4 @@ public interface StateOperations {
 
     void closed(Run run);
 
-    Integer time(Run run);
 }
