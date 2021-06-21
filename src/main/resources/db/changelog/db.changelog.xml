@@ -2,9 +2,10 @@
 <databaseChangeLog
 		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
 		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-	<changeSet author="nicolas" id="1">
+	<!--<changeSet author="nicolas" id="1">
 		<createSequence minValue="1" incrementBy="1"
 			sequenceName="hibernate_sequence" />
 	</changeSet>
@@ -21,6 +22,33 @@
 		<rollback>
 			<dropTable tableName="users" />
 		</rollback>
+	</changeSet>-->
+
+	<changeSet id="1" author="nicolas">
+		<ext:createCollection collectionName="myCollection">
+			<ext:options>
+				{
+				validator: {
+				$jsonSchema: {
+				bsonType: "object",
+				required: ["name", "address"],
+				properties: {
+				name: {
+				bsonType: "string",
+				description: "The Name"
+				},
+				address: {
+				bsonType: "string",
+				description: "The Address"
+				}
+				}
+				}
+				},
+				validationAction: "warn",
+				validationLevel: "strict"
+				}
+			</ext:options>
+		</ext:createCollection>
 	</changeSet>
-	
+
 </databaseChangeLog>

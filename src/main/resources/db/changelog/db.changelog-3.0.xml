@@ -21,14 +21,14 @@
         <sqlFile dbms="postgresql" path="db/changelog/sql/insert_locations.sql"/>
     </changeSet>-->
 
-    <changeSet id="6" author="nicolas">
-        <ext:insertOne collectionName="running_app">
-            <ext:document>
-                {
-                id: a4295f86-6cd0-4f48-acda-080005f3a558
-                }
-            </ext:document>
-        </ext:insertOne>
-    </changeSet>
+    <!-- <changeSet id="6" author="nicolas">
+         <ext:insertOne collectionName="running_app">
+             <ext:document>
+                 {
+                 id: a4295f86-6cd0-4f48-acda-080005f3a558
+                 }
+             </ext:document>
+         </ext:insertOne>
+     </changeSet>-->
 
 </databaseChangeLog>
