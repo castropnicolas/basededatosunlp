@@ -4,9 +4,8 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
-    <include relativeToChangelogFile="true" file="db.changelog.xml"/>
-    <include relativeToChangelogFile="true" file="changelog.create-collection.xml"/>
-   <!-- <include relativeToChangelogFile="true" file="db.changelog-1.0.xml"/>
-    <include relativeToChangelogFile="true" file="db.changelog-2.0.xml"/>
-    <include relativeToChangelogFile="true" file="db.changelog-3.0.xml"/>-->
+    <include relativeToChangelogFile="true" file="nosql/insert-users.xml"/>
+    <include relativeToChangelogFile="true" file="nosql/insert-runs.xml"/>
+    <include relativeToChangelogFile="true" file="nosql/insert-locations.xml"/>
+
 </databaseChangeLog>

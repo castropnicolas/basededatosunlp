@@ -5,17 +5,6 @@ spring:
     mongodb:
       database: basededatosunlp
       uri: mongodb://localhost:27017
-  jpa:
-    mapping-resources:
-      - mappings/User.hbm.xml
-      - mappings/RunningApp.hbm.xml
-      - mappings/Run.hbm.xml
-      - mappings/Location.hbm.xml
-    show-sql: true
-    hibernate.ddl-auto: none
-  liquibase:
-    change-log: classpath:/db/changelog/db.changelog-master.xml
-
 
 #spring.data.mongodb:
 #  database: customers # Database name.
