@@ -1,0 +1,24 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="1" author="nicolas">
+        <ext:createCollection collectionName="runningapp"/>
+    </changeSet>
+
+    <changeSet id="2" author="nicolas">
+        <ext:insertOne collectionName="runningapp">
+            <ext:document>
+                <!-- @formatter:off -->
+                {
+                    "_id": "a4295f86-6cd0-4f48-acda-080005f3a558"
+                }
+                <!-- @formatter:on -->
+            </ext:document>
+        </ext:insertOne>
+    </changeSet>
+
+</databaseChangeLog>

@@ -3,9 +3,17 @@ spring:
     name: basededatos-unlp
   data:
     mongodb:
-      database: basededatosunlp
-      uri: mongodb://localhost:27017
+#      database: basededatosunlp
+      uri: mongodb://localhost:27017/basededatosunlp
 
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          mongodb:
+            core:
+              MongoTemplate: DEBUG
 #spring.data.mongodb:
 #  database: customers # Database name.
 #  uri: mongodb://mongo:27017 # Mongo database URI. Cannot be set with host, port and credentials.

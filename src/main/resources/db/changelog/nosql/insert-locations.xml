@@ -5,11 +5,11 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    <changeSet id="5" author="nicolas">
+    <changeSet id="7" author="nicolas">
         <ext:createCollection collectionName="locations"/>
     </changeSet>
 
-    <changeSet id="6" author="nicolas">
+    <changeSet id="8" author="nicolas">
         <ext:insertMany collectionName="locations">
             <ext:documents>
                 <!-- @formatter:off -->
