@@ -2,6 +2,7 @@ package ar.edu.unlp.dto;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 public class UserDTO {
 
@@ -13,14 +14,17 @@ public class UserDTO {
 	@NotNull
 	private String username;
 
+	private Date createdAt;
+
 	public UserDTO() {
 
 	}
 
-	public UserDTO(String anId, String anUsername, String aName) {
+	public UserDTO(String anId, String anUsername, String aName, Date createdAt) {
 		this.setId(anId);
 		this.setName(aName);
 		this.setUsername(anUsername);
+		this.setCreatedAt(createdAt);
 	}
 
 	public String getId() {
@@ -47,4 +51,11 @@ public class UserDTO {
 		this.name = aName;
 	}
 
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
 }
