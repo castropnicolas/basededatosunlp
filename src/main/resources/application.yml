@@ -3,8 +3,11 @@ spring:
     name: basededatos-unlp
   data:
     mongodb:
-#      database: basededatosunlp
-      uri: mongodb://localhost:27017/basededatosunlp
+      host: localhost
+      port: 27017
+      database: basededatosunlp
+    #      database: basededatosunlp
+  #    uri: mongodb://localhost:27017/basededatosunlp
 
 logging:
   level:
