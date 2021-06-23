@@ -6,15 +6,16 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
     <changeSet id="1" author="nicolas">
-        <ext:createCollection collectionName="runningapp"/>
+        <ext:createCollection collectionName="runningApp"/>
     </changeSet>
 
     <changeSet id="2" author="nicolas">
-        <ext:insertOne collectionName="runningapp">
+        <ext:insertOne collectionName="runningApp">
             <ext:document>
                 <!-- @formatter:off -->
                 {
-                    "_id": "a4295f86-6cd0-4f48-acda-080005f3a558"
+                    "_id": "a4295f86-6cd0-4f48-acda-080005f3a558",
+                    "_class": "ar.edu.unlp.model.RunningApp"
                 }
                 <!-- @formatter:on -->
             </ext:document>

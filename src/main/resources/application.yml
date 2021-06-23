@@ -9,6 +9,14 @@ spring:
     #      database: basededatosunlp
   #    uri: mongodb://localhost:27017/basededatosunlp
 
+  jpa:
+    mapping-resources:
+      - mappings/User.hbm.xml
+      - mappings/RunningApp.hbm.xml
+
+  main:
+    allow-bean-definition-overriding: true
+
 logging:
   level:
     org:

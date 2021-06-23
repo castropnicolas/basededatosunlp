@@ -67,6 +67,7 @@ public class RunServiceImpl implements IRunService {
     public RunDTO addRun(String username) throws UserUnknownException {
         RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
         Run aRun = runningApp.addRunToUser(username);
+        RepositoryLocator.getInstance().getRunRepository().save(aRun);
         return this.getDtoFactory().createRunDTO(aRun);
     }
 
