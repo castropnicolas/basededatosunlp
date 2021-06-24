@@ -17,9 +17,9 @@ import java.util.Collection;
 @Transactional
 public class UserServiceImpl implements IUserService {
 
-    public UserServiceImpl(UserRepository userRepository, RunningAppRepository RunningAppRepository, RunRepository runRepository) {
+    public UserServiceImpl(UserRepository userRepository, RunningAppRepository runningAppRepository, RunRepository runRepository) {
         RepositoryLocator.getInstance().setUserRepository(userRepository);
-        RepositoryLocator.getInstance().setRunningAppRepository(RunningAppRepository);
+        RepositoryLocator.getInstance().setRunningAppRepository(runningAppRepository);
         RepositoryLocator.getInstance().setRunRepository(runRepository);
     }
 
