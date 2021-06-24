@@ -1,32 +1,32 @@
-spring:
-  application:
-    name: basededatos-unlp
-  data:
-    mongodb:
-      host: localhost
-      port: 27017
-      database: basededatosunlp
-    #      database: basededatosunlp
-  #    uri: mongodb://localhost:27017/basededatosunlp
-
-  jpa:
-    mapping-resources:
-      - mappings/User.hbm.xml
-      - mappings/RunningApp.hbm.xml
-
-  main:
-    allow-bean-definition-overriding: true
-
-logging:
-  level:
-    org:
-      springframework:
-        data:
-          mongodb:
-            core:
-              MongoTemplate: DEBUG
-#spring.data.mongodb:
-#  database: customers # Database name.
-#  uri: mongodb://mongo:27017 # Mongo database URI. Cannot be set with host, port and credentials.
-
-#spring.data.mongodb.uri=mongodb://root:root@localhost:27017/test_db
+#spring:
+#  application:
+#    name: basededatos-unlp
+#  data:
+#    mongodb:
+#      host: localhost
+#      port: 27017
+#      database: basededatosunlp
+#    #      database: basededatosunlp
+#  #    uri: mongodb://localhost:27017/basededatosunlp
+#
+#  jpa:
+#    mapping-resources:
+#      - mappings/User.hbm.xml
+#      - mappings/RunningApp.hbm.xml
+#
+#  main:
+#    allow-bean-definition-overriding: true
+#
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        data:
+#          mongodb:
+#            core:
+#              MongoTemplate: DEBUG
+##spring.data.mongodb:
+##  database: customers # Database name.
+##  uri: mongodb://mongo:27017 # Mongo database URI. Cannot be set with host, port and credentials.
+#
+##spring.data.mongodb.uri=mongodb://root:root@localhost:27017/test_db

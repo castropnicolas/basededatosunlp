@@ -22,7 +22,7 @@ public class RunServiceImpl implements IRunService {
 
     @Override
     public Collection<RunDTO> getAllRuns() {
-        Collection<Run> runs = getRunRepository().findAll();
+        Collection<Run> runs = null;
         Collection<RunDTO> runDTOS = new ArrayList<>();
         runs.forEach(anRun -> runDTOS.add(this.getDtoFactory().createRunDTO(anRun)));
         return runDTOS;
@@ -67,7 +67,7 @@ public class RunServiceImpl implements IRunService {
     public RunDTO addRun(String username) throws UserUnknownException {
         RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
         Run aRun = runningApp.addRunToUser(username);
-        RepositoryLocator.getInstance().getRunRepository().save(aRun);
+//        RepositoryLocator.getInstance().getRunRepository().save(aRun);
         return this.getDtoFactory().createRunDTO(aRun);
     }
 

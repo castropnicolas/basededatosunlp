@@ -4,15 +4,11 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="ar.edu.unlp.model">
-    <class name="ar.edu.unlp.model.RunningApp" table="runningApp">
-        <id name="id" column="id">
+    <class name="ar.edu.unlp.model.Editor" table="editors">
+        <id name="editorId" column="id">
             <generator class="org.hibernate.id.UUIDHexGenerator"/>
         </id>
-
-        <bag name="users" lazy="extra" cascade="all">
-            <key column="running_app_id" not-null="false"/>
-            <one-to-many class="ar.edu.unlp.model.User"/>
-        </bag>
-
+        <property name="editorName" column="editorName" type="string"/>
     </class>
+
 </hibernate-mapping>

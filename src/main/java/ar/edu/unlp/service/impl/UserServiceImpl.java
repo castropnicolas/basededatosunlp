@@ -11,8 +11,8 @@ import ar.edu.unlp.repository.RunningAppRepository;
 import ar.edu.unlp.repository.UserRepository;
 import ar.edu.unlp.service.IUserService;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
 

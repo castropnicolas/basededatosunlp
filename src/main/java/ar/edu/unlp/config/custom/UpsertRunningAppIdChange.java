@@ -1,3 +1,4 @@
+/*
 package ar.edu.unlp.config.custom;
 
 import com.mongodb.client.MongoCollection;
@@ -65,3 +66,4 @@ public class UpsertRunningAppIdChange implements CustomTaskChange, CustomTaskRol
         //TODO: unset the upsert-ed field. Currently do nothing
     }
 }
+*/

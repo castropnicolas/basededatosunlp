@@ -1,3 +1,4 @@
+/*
 package ar.edu.unlp.config;
 
 import liquibase.Liquibase;
@@ -27,3 +28,4 @@ public class MongoLiquibaseRunner implements CommandLineRunner, ResourceLoaderAw
     }
 
 }
+*/

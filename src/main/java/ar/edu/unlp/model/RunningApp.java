@@ -18,13 +18,10 @@ public class RunningApp {
 
     private Collection<User> users;
 
-    private Collection<Run> runs;
-
     private static RunningApp instance;
 
-    private RunningApp() {
+    public RunningApp() {
         this.setUsers(new ArrayList<>());
-        this.setRuns(new ArrayList<>());
     }
 
     public static RunningApp getInstance() {
@@ -48,14 +45,6 @@ public class RunningApp {
 
     private void setUsers(Collection<User> users) {
         this.users = users;
-    }
-
-    public Collection<Run> getRuns() {
-        return runs;
-    }
-
-    public void setRuns(Collection<Run> runs) {
-        this.runs = runs;
     }
 
     public User addUser(String username, String password, String name) throws UsernameNotUniqueException {
@@ -84,10 +73,10 @@ public class RunningApp {
     }
 
     public void deleteUserById(String id) throws UserUnknownException {
-        Optional<User> user = this.getUserRepository().findById(id);
+        Optional<User> user = null;
         if (!user.isPresent())
             throw new UserUnknownException();
-        this.getUserRepository().delete(user.get());
+//        this.getUserRepository().delete(user.get());
     }
 
     public Run pausedRun(String anId) throws RunUnknownException {
@@ -137,7 +126,7 @@ public class RunningApp {
     }
 
     public Integer numberOfUsers() {
-        Long numberOfUsers = getUserRepository().count();
+        Long numberOfUsers = 0L;
         return numberOfUsers.intValue();
     }
 }

@@ -1,3 +1,4 @@
+/*
 package ar.edu.unlp.config;
 
 import liquibase.database.DatabaseFactory;
@@ -15,13 +16,16 @@ public class MongoLiquibaseRunnerConfig {
         return new MongoLiquibaseRunner(database);
     }
 
-    /**
+    */
+/**
      * @return Database with connection
      * @throws DatabaseException when cannot connect
-     */
+     *//*
+
     @Bean
     public MongoLiquibaseDatabase database() throws DatabaseException {
         return (MongoLiquibaseDatabase) DatabaseFactory.getInstance().openDatabase(url, null, null, null, null);
     }
 
 }
+*/
