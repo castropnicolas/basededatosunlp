@@ -3,7 +3,6 @@ package ar.edu.unlp.service.impl;
 import ar.edu.unlp.dto.DTOFactory;
 import ar.edu.unlp.dto.UserDTO;
 import ar.edu.unlp.exceptions.UserUnknownException;
-import ar.edu.unlp.model.Run;
 import ar.edu.unlp.model.RunningApp;
 import ar.edu.unlp.model.User;
 import ar.edu.unlp.repository.RepositoryLocator;
@@ -13,7 +12,6 @@ import ar.edu.unlp.repository.UserRepository;
 import ar.edu.unlp.service.IUserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -32,11 +30,6 @@ public class UserServiceImpl implements IUserService {
     public UserDTO addUser(String aName, String anUsername, String aPassword) throws Exception {
         RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
         User newUser = runningApp.addUser(anUsername, aPassword, aName);
-//        this.getMongoUserRepository().save(newUser);
-        User userExample = new User(anUsername, aPassword, aName);
-        Run newRun = new Run();
-        userExample.addRun(newRun);
-        RepositoryLocator.getInstance().getUserRepository().save(userExample);
         return this.getDtoFactory().createUserDTO(newUser);
     }
 
