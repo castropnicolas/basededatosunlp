@@ -18,13 +18,10 @@ public class RunningApp {
 
     private Collection<User> users;
 
-    private Collection<Run> runs;
-
     private static RunningApp instance;
 
     private RunningApp() {
         this.setUsers(new ArrayList<>());
-        this.setRuns(new ArrayList<>());
     }
 
     public static RunningApp getInstance() {
@@ -48,14 +45,6 @@ public class RunningApp {
 
     private void setUsers(Collection<User> users) {
         this.users = users;
-    }
-
-    public Collection<Run> getRuns() {
-        return runs;
-    }
-
-    public void setRuns(Collection<Run> runs) {
-        this.runs = runs;
     }
 
     public User addUser(String username, String password, String name) throws UsernameNotUniqueException {
