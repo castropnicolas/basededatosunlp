@@ -1,0 +1,24 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="ar.edu.unlp.model">
+    <class name="ar.edu.unlp.model.Run" table="runs">
+        <id name="id" column="id">
+            <generator class="org.hibernate.id.UUIDHexGenerator"/>
+        </id>
+        <property name="start" column="start" type="timestamp"/>
+        <property name="end" column="end" type="timestamp"/>
+        <property name="state" column="state">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">ar.edu.unlp.model.State</param>
+                <param name="useNamed">true</param>
+            </type>
+        </property>
+        <!--<bag name="locations" lazy="extra" cascade="all">
+            <key column="run_id" not-null="false"/>
+            <one-to-many class="ar.edu.unlp.model.Location"/>
+        </bag>-->
+    </class>
+</hibernate-mapping>

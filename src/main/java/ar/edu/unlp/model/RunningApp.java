@@ -1,8 +1,10 @@
 package ar.edu.unlp.model;
 
+import ar.edu.unlp.exceptions.RunUnknownException;
 import ar.edu.unlp.exceptions.UserUnknownException;
 import ar.edu.unlp.exceptions.UsernameNotUniqueException;
 import ar.edu.unlp.repository.RepositoryLocator;
+import ar.edu.unlp.repository.RunRepository;
 import ar.edu.unlp.repository.UserRepository;
 
 import java.util.ArrayList;
@@ -63,12 +65,12 @@ public class RunningApp {
         return user;
     }
 
-    /*public Run findRunById(String id) throws RunUnknownException {
+    public Run findRunById(String id) throws RunUnknownException {
         Optional<Run> optionalRun = this.getRunRepository().findById(id);
         if (!optionalRun.isPresent())
             throw new RunUnknownException();
         return optionalRun.get();
-    }*/
+    }
 
     public void deleteUserById(String id) throws UserUnknownException {
         Optional<User> user = this.getUserRepository().findById(id);
@@ -77,7 +79,7 @@ public class RunningApp {
         this.getUsers().removeIf(anUser -> anUser.equals(user.get()));
     }
 
-   /* public Run pausedRun(String anId) throws RunUnknownException {
+    public Run pausedRun(String anId) throws RunUnknownException {
         Optional<Run> optionalRun = getRunRepository().findById(anId);
         if (!optionalRun.isPresent())
             throw new RunUnknownException();
@@ -101,27 +103,27 @@ public class RunningApp {
         return optionalRun.get();
     }
 
-    public Location addLocationToRun(String idRun, Double aLongitude, Double aLatitude) {
+    /*public Location addLocationToRun(String idRun, Double aLongitude, Double aLatitude) {
         Optional<Run> optionalRun = getRunRepository().findById(idRun);
         Location newLocation = new Location(aLatitude, aLongitude);
         optionalRun.get().addLocation(newLocation);
         return newLocation;
-    }
+    }*/
 
     public Run addRunToUser(String username) throws UserUnknownException {
         User anUser = findByUsername(username);
         Run newRun = new Run();
         anUser.addRun(newRun);
         return newRun;
-    }*/
+    }
 
     private UserRepository getUserRepository() {
         return RepositoryLocator.getInstance().getUserRepository();
     }
 
-    /*private RunRepository getRunRepository() {
+    private RunRepository getRunRepository() {
         return RepositoryLocator.getInstance().getRunRepository();
-    }*/
+    }
 
     public Integer numberOfUsers() {
         Long numberOfUsers = getUserRepository().count();

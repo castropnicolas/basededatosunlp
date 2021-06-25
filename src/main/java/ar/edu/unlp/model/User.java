@@ -1,6 +1,8 @@
 package ar.edu.unlp.model;
 
+import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 
 public class User {
 
@@ -9,17 +11,17 @@ public class User {
     private String password;
     private String name;
     private Date createdAt;
-//    private Collection<Run> runs;
+    private Collection<Run> runs;
 
     public User() {
-//        this.setRuns(new HashSet<>());
+        this.setRuns(new HashSet<>());
     }
 
     public User(String anUsername, String aPassword, String aName) {
         this.setUsername(anUsername);
         this.setName(aName);
         this.setPassword(aPassword);
-//        this.setRuns(new HashSet<>());
+        this.setRuns(new HashSet<>());
     }
 
     public String getId() {
@@ -62,7 +64,7 @@ public class User {
         this.createdAt = createdAt;
     }
 
-    /*public Collection<Run> getRuns() {
+    public Collection<Run> getRuns() {
         return runs;
     }
 
@@ -72,5 +74,5 @@ public class User {
 
     public void addRun(Run newRun) {
         this.getRuns().add(newRun);
-    }*/
+    }
 }
