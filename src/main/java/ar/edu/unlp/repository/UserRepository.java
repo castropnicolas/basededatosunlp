@@ -10,8 +10,6 @@ public interface UserRepository {
 
     Boolean existsByUsername(String username);
 
-    void deleteById(String id);
-
     Long count();
 
     void delete(User user);
