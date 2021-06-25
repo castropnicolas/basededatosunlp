@@ -4,8 +4,6 @@ import ar.edu.unlp.dto.LocationDTO;
 import ar.edu.unlp.dto.RunDTO;
 import ar.edu.unlp.exceptions.RunUnknownException;
 
-import java.util.Collection;
-
 public interface IRunService {
 
     RunDTO pausedRun(String id) throws RunUnknownException;
