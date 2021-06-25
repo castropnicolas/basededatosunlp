@@ -1,10 +1,8 @@
 package ar.edu.unlp.model;
 
-import ar.edu.unlp.exceptions.RunUnknownException;
 import ar.edu.unlp.exceptions.UserUnknownException;
 import ar.edu.unlp.exceptions.UsernameNotUniqueException;
 import ar.edu.unlp.repository.RepositoryLocator;
-import ar.edu.unlp.repository.RunRepository;
 import ar.edu.unlp.repository.UserRepository;
 
 import java.util.ArrayList;
@@ -20,7 +18,7 @@ public class RunningApp {
 
     private static RunningApp instance;
 
-    public RunningApp() {
+    private RunningApp() {
         this.setUsers(new ArrayList<>());
     }
 
@@ -65,21 +63,21 @@ public class RunningApp {
         return user;
     }
 
-    public Run findRunById(String id) throws RunUnknownException {
+    /*public Run findRunById(String id) throws RunUnknownException {
         Optional<Run> optionalRun = this.getRunRepository().findById(id);
         if (!optionalRun.isPresent())
             throw new RunUnknownException();
         return optionalRun.get();
-    }
+    }*/
 
     public void deleteUserById(String id) throws UserUnknownException {
-        Optional<User> user = null;
+        Optional<User> user = this.getUserRepository().findById(id);
         if (!user.isPresent())
             throw new UserUnknownException();
-//        this.getUserRepository().delete(user.get());
+        this.getUserRepository().delete(user.get());
     }
 
-    public Run pausedRun(String anId) throws RunUnknownException {
+   /* public Run pausedRun(String anId) throws RunUnknownException {
         Optional<Run> optionalRun = getRunRepository().findById(anId);
         if (!optionalRun.isPresent())
             throw new RunUnknownException();
@@ -115,18 +113,18 @@ public class RunningApp {
         Run newRun = new Run();
         anUser.addRun(newRun);
         return newRun;
-    }
+    }*/
 
     private UserRepository getUserRepository() {
         return RepositoryLocator.getInstance().getUserRepository();
     }
 
-    private RunRepository getRunRepository() {
+    /*private RunRepository getRunRepository() {
         return RepositoryLocator.getInstance().getRunRepository();
-    }
+    }*/
 
     public Integer numberOfUsers() {
-        Long numberOfUsers = 0L;
+        Long numberOfUsers = getUserRepository().count();
         return numberOfUsers.intValue();
     }
 }

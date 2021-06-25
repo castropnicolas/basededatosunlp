@@ -1,8 +1,8 @@
-package ar.edu.unlp.repository;
+package ar.edu.unlp.service;
 
 import ar.edu.unlp.model.RunningApp;
 
-public interface RunningAppRepository {
+public interface IRunningAppService {
 
     RunningApp findFirstByOrderById();
 }

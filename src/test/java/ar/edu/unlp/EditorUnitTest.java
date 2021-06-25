@@ -1,9 +1,7 @@
+/*
 package ar.edu.unlp;
 
-import ar.edu.unlp.model.Editor;
-import ar.edu.unlp.model.Run;
 import ar.edu.unlp.model.RunningApp;
-import ar.edu.unlp.model.User;
 import org.junit.Test;
 
 import javax.persistence.EntityManager;
@@ -11,39 +9,42 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.transaction.TransactionManager;
 
-import java.util.Date;
-
-import static org.fest.assertions.Assertions.assertThat;
-
 public class EditorUnitTest {
 
-    @Test
+    */
+/*@Test
     public void givenMongoDB_WhenEntitiesCreated_thenCanBeRetrieved() throws Exception {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ogm-mongodb");
         Editor editor = generateTestData();
         persistTestData(entityManagerFactory, editor);
         loadAndVerifyTestData(entityManagerFactory, editor);
-    }
+    }*//*
+
 
     @Test
     public void givenMongoDB_WhenEntitiesCreated_thenCanBeRetrieved_anUser() throws Exception {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ogm-mongodb");
         RunningApp runningApp = new RunningApp();
-        runningApp.setId("a4295f86-6cd0-4f48-acda-080005f3a558");
-      /*  User anUser = generateUserTestData();
-        runningApp.getUsers().add(anUser);*/
+//        runningApp.setId("a4295f86-6cd0-4f48-acda-080005f3a558");
+      */
+/*  User anUser = generateUserTestData();
+        runningApp.getUsers().add(anUser);*//*
+
         persistTestDataUser(entityManagerFactory, runningApp);
 //        loadAndVerifyTestData(entityManagerFactory, anUser);
     }
-    /*@Test
+    */
+/*@Test
     public void givenNeo4j_WhenEntitiesCreated_thenCanBeRetrieved() throws Exception {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ogm-neo4j");
         Editor editor = generateTestData();
         persistTestData(entityManagerFactory, editor);
         loadAndVerifyTestData(entityManagerFactory, editor);
-    }*/
+    }*//*
 
-    private void persistTestData(EntityManagerFactory entityManagerFactory, Editor editor) throws Exception {
+
+    */
+/*private void persistTestData(EntityManagerFactory entityManagerFactory, Editor editor) throws Exception {
         TransactionManager transactionManager = com.arjuna.ats.jta.TransactionManager.transactionManager();
         EntityManager entityManager;
 
@@ -52,7 +53,8 @@ public class EditorUnitTest {
         entityManager.persist(editor);
         entityManager.close();
         transactionManager.commit();
-    }
+    }*//*
+
 
     private void persistTestDataUser(EntityManagerFactory entityManagerFactory, RunningApp runningApp) throws Exception {
         TransactionManager transactionManager = com.arjuna.ats.jta.TransactionManager.transactionManager();
@@ -60,13 +62,14 @@ public class EditorUnitTest {
 
         transactionManager.begin();
         entityManager = entityManagerFactory.createEntityManager();
-//        entityManager.persist(runningApp);
-        entityManager.merge(runningApp);
+        entityManager.persist(runningApp);
+//        entityManager.merge(runningApp);
         entityManager.close();
         transactionManager.commit();
     }
 
-    private void loadAndVerifyTestData(EntityManagerFactory entityManagerFactory, Editor editor) throws Exception {
+    */
+/*private void loadAndVerifyTestData(EntityManagerFactory entityManagerFactory, Editor editor) throws Exception {
         TransactionManager transactionManager = com.arjuna.ats.jta.TransactionManager.transactionManager();
         EntityManager entityManager;
 
@@ -75,7 +78,9 @@ public class EditorUnitTest {
         Editor loadedEditor = entityManager.find(Editor.class, editor.getEditorId());
         assertThat(loadedEditor).isNotNull();
         assertThat(loadedEditor.getEditorName()).isEqualTo("Tom");
-       /* assertThat(loadedEditor.getAssignedAuthors()).onProperty("authorName")
+       *//*
+*/
+/* assertThat(loadedEditor.getAssignedAuthors()).onProperty("authorName")
             .containsOnly("Maria", "Mike");
         Map<String, Author> loadedAuthors = loadedEditor.getAssignedAuthors()
             .stream()
@@ -85,7 +90,9 @@ public class EditorUnitTest {
                 .containsOnly("Basic of Hibernate OGM");
         assertThat(loadedAuthors.get("Mike")
             .getAuthoredArticles()).onProperty("articleTitle")
-                .containsOnly("Intermediate of Hibernate OGM", "Advanced of Hibernate OGM");*/
+                .containsOnly("Intermediate of Hibernate OGM", "Advanced of Hibernate OGM");*//*
+*/
+/*
         entityManager.close();
         transactionManager.commit();
     }
@@ -96,7 +103,9 @@ public class EditorUnitTest {
         newUser.setCreatedAt(new Date());
         Run anRun = new Run();
         newUser.addRun(anRun);
-        /*Author maria = new Author("Maria");
+        *//*
+*/
+/*Author maria = new Author("Maria");
         Author mike = new Author("Mike");
         Article basic = new Article("Basic of Hibernate OGM");
         Article intermediate = new Article("Intermediate of Hibernate OGM");
@@ -115,7 +124,9 @@ public class EditorUnitTest {
         maria.setEditor(tom);
         tom.getAssignedAuthors()
             .add(mike);
-        mike.setEditor(tom);*/
+        mike.setEditor(tom);*//*
+*/
+/*
         return tom;
     }
 
@@ -125,5 +136,7 @@ public class EditorUnitTest {
         Run anRun = new Run();
         newUser.addRun(anRun);
         return newUser;
-    }
+    }*//*
+
 }
+*/

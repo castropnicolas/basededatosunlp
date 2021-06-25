@@ -1,9 +1,10 @@
 package ar.edu.unlp.repository;
 
 import ar.edu.unlp.model.User;
-import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface UserRepository extends MongoRepository<User, String> {
+import java.util.Optional;
+
+public interface UserRepository {
 
     User findByUsername(String anUsername);
 
@@ -11,4 +12,9 @@ public interface UserRepository extends MongoRepository<User, String> {
 
     void deleteById(String id);
 
+    Long count();
+
+    void delete(User user);
+
+    Optional<User> findById(String id);
 }
