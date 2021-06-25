@@ -1,5 +1,6 @@
 package ar.edu.unlp.api;
 
+import ar.edu.unlp.dto.LocationDTO;
 import ar.edu.unlp.dto.RunDTO;
 import ar.edu.unlp.exceptions.RunUnknownException;
 import ar.edu.unlp.service.IRunService;
@@ -88,12 +89,12 @@ public class RunController {
         return ResponseEntity.ok().body(runDTO);
     }
 
-    /*@PostMapping("/createLocation/{id}")
+    @PostMapping("/createLocation/{id}")
     @ApiOperation("Agregar ubicación a una carrera")
     public ResponseEntity<?> createLocation(@PathVariable String id, @RequestBody LocationDTO dto) {
         LocationDTO locationDTO = null;
         locationDTO = this.getRunService().addLocation(id, dto.getLatitude(), dto.getLongitude());
         return ResponseEntity.ok().body(locationDTO);
-    }*/
+    }
 
 }

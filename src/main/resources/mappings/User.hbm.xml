@@ -17,4 +17,5 @@
             <one-to-many class="ar.edu.unlp.model.Run"/>
         </bag>
     </class>
+
 </hibernate-mapping>

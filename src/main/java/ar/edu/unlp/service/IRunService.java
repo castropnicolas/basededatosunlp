@@ -1,5 +1,6 @@
 package ar.edu.unlp.service;
 
+import ar.edu.unlp.dto.LocationDTO;
 import ar.edu.unlp.dto.RunDTO;
 import ar.edu.unlp.exceptions.RunUnknownException;
 
@@ -17,7 +18,7 @@ public interface IRunService {
 
     RunDTO findById(String id) throws RunUnknownException;
 
-//    LocationDTO addLocation(String idRun, Double aLatitude, Double aLongitude);
+    LocationDTO addLocation(String idRun, Double aLatitude, Double aLongitude);
 
     RunDTO addRun(String username) throws Exception;
 

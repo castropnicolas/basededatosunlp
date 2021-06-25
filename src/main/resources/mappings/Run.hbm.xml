@@ -16,9 +16,9 @@
                 <param name="useNamed">true</param>
             </type>
         </property>
-        <!--<bag name="locations" lazy="extra" cascade="all">
+        <bag name="locations" lazy="extra" cascade="all">
             <key column="run_id" not-null="false"/>
             <one-to-many class="ar.edu.unlp.model.Location"/>
-        </bag>-->
+        </bag>
     </class>
 </hibernate-mapping>

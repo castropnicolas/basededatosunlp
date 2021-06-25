@@ -1,5 +1,6 @@
 package ar.edu.unlp.dto;
 
+import ar.edu.unlp.model.Location;
 import ar.edu.unlp.model.Run;
 import ar.edu.unlp.model.User;
 
@@ -26,8 +27,8 @@ public class DTOFactory {
         return new RunDTO(anRun.getId(), anRun.getStart(), anRun.getEnd(), anRun.getState(), anRun.time());
     }
 
-  /*  public LocationDTO createLocationDTO(Location anLocation) {
+    public LocationDTO createLocationDTO(Location anLocation) {
         return new LocationDTO(anLocation.getLatitude(), anLocation.getLatitude());
-    }*/
+    }
 
 }
