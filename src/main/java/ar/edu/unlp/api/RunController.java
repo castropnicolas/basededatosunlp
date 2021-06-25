@@ -3,12 +3,15 @@ package ar.edu.unlp.api;
 import ar.edu.unlp.dto.LocationDTO;
 import ar.edu.unlp.dto.RunDTO;
 import ar.edu.unlp.exceptions.RunUnknownException;
+import ar.edu.unlp.exceptions.UserUnknownException;
 import ar.edu.unlp.service.IRunService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.Collection;
 
 @RestController
 @RequestMapping("/run")
@@ -27,8 +30,25 @@ public class RunController {
     @PostMapping("/create")
     @ApiOperation("Agregar una carrera, para un usuario existente")
     public ResponseEntity<?> create(@RequestParam("username") String username) throws Exception {
-        RunDTO runDTO = this.getRunService().addRun(username);
+        RunDTO runDTO = null;
+        try {
+            runDTO = this.getRunService().addRun(username);
+        } catch (UserUnknownException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Nombre de usuario inexistente");
+        }
         return ResponseEntity.status(HttpStatus.CREATED).body(runDTO);
+    }
+
+    @GetMapping("/all/{username}")
+    @ApiOperation("Listar todas las carreras para un usuario")
+    public ResponseEntity<?> list(@PathVariable String username) {
+        Collection<RunDTO> list = null;
+        try {
+            list = this.getRunService().findByUsername(username);
+        } catch (UserUnknownException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Nombre de usuario inexistente");
+        }
+        return ResponseEntity.ok().body(list);
     }
 
     @PutMapping("/paused/{id}")
@@ -38,7 +58,7 @@ public class RunController {
         try {
             runDTO = this.getRunService().pausedRun(id);
         } catch (RunUnknownException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Id de carrera inexistente");
         }
         return ResponseEntity.ok().body(runDTO);
     }
@@ -50,7 +70,7 @@ public class RunController {
         try {
             runDTO = this.getRunService().closedRun(id);
         } catch (RunUnknownException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Id de carrera inexistente");
         }
         return ResponseEntity.ok().body(runDTO);
 
@@ -63,7 +83,7 @@ public class RunController {
         try {
             runDTO = this.getRunService().activeRun(id);
         } catch (RunUnknownException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Id de carrera inexistente");
         }
         return ResponseEntity.ok().body(runDTO);
     }
@@ -75,7 +95,7 @@ public class RunController {
         try {
             runDTO = this.getRunService().findById(id);
         } catch (RunUnknownException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Id de carrera inexistente");
         }
         return ResponseEntity.ok().body(runDTO);
     }
@@ -84,7 +104,11 @@ public class RunController {
     @ApiOperation("Agregar ubicación a una carrera")
     public ResponseEntity<?> createLocation(@PathVariable String id, @RequestBody LocationDTO dto) {
         LocationDTO locationDTO = null;
-        locationDTO = this.getRunService().addLocation(id, dto.getLatitude(), dto.getLongitude());
+        try {
+            locationDTO = this.getRunService().addLocation(id, dto.getLatitude(), dto.getLongitude());
+        } catch (RunUnknownException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Id de carrera inexistente");
+        }
         return ResponseEntity.ok().body(locationDTO);
     }
 

@@ -103,11 +103,18 @@ public class RunningApp {
         return optionalRun.get();
     }
 
-    public Location addLocationToRun(String idRun, Double aLongitude, Double aLatitude) {
+    public Location addLocationToRun(String idRun, Double aLongitude, Double aLatitude) throws RunUnknownException {
         Optional<Run> optionalRun = getRunRepository().findById(idRun);
+        if (!optionalRun.isPresent()) throw new RunUnknownException();
         Location newLocation = new Location(aLatitude, aLongitude);
         optionalRun.get().addLocation(newLocation);
         return newLocation;
+    }
+
+    public Collection<Run> findRunsByUser(String username) throws UserUnknownException {
+        User user = this.findByUsername(username);
+        if (user == null) throw new UserUnknownException();
+        return user.getRuns();
     }
 
     public Run addRunToUser(String username) throws UserUnknownException {

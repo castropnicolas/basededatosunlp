@@ -51,7 +51,7 @@ public class RunServiceImpl implements IRunService {
     }
 
     @Override
-    public LocationDTO addLocation(String idRun, Double aLatitude, Double aLongitude) {
+    public LocationDTO addLocation(String idRun, Double aLatitude, Double aLongitude) throws RunUnknownException {
         RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
         Location newLocation = runningApp.addLocationToRun(idRun, aLatitude, aLongitude);
         return this.getDtoFactory().createLocationDTO(newLocation);
@@ -64,12 +64,17 @@ public class RunServiceImpl implements IRunService {
         return this.getDtoFactory().createRunDTO(aRun);
     }
 
-    public RunningAppRepository getRunningAppRepository() {
-        return RepositoryLocator.getInstance().getRunningAppRepository();
+    @Override
+    public Collection<RunDTO> findByUsername(String username) throws UserUnknownException {
+        RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
+        Collection<Run> runs = runningApp.findRunsByUser(username);
+        Collection<RunDTO> runDTOS = new ArrayList<>();
+        runs.forEach(anRun -> runDTOS.add(this.getDtoFactory().createRunDTO(anRun)));
+        return runDTOS;
     }
 
-    public RunRepository getRunRepository() {
-        return RepositoryLocator.getInstance().getRunRepository();
+    public RunningAppRepository getRunningAppRepository() {
+        return RepositoryLocator.getInstance().getRunningAppRepository();
     }
 
     public DTOFactory getDtoFactory() {
