@@ -9,7 +9,6 @@ import ar.edu.unlp.model.Location;
 import ar.edu.unlp.model.Run;
 import ar.edu.unlp.model.RunningApp;
 import ar.edu.unlp.repository.RepositoryLocator;
-import ar.edu.unlp.repository.RunRepository;
 import ar.edu.unlp.repository.RunningAppRepository;
 import ar.edu.unlp.service.IRunService;
 import org.springframework.stereotype.Service;
