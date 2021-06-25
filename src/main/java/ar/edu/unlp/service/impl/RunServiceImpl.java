@@ -23,14 +23,6 @@ import java.util.Collection;
 public class RunServiceImpl implements IRunService {
 
     @Override
-    public Collection<RunDTO> getAllRuns() {
-        Collection<Run> runs = getRunRepository().findAll();
-        Collection<RunDTO> runDTOS = new ArrayList<>();
-        runs.forEach(anRun -> runDTOS.add(this.getDtoFactory().createRunDTO(anRun)));
-        return runDTOS;
-    }
-
-    @Override
     public RunDTO pausedRun(String id) throws RunUnknownException {
         RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
         Run aRun = runningApp.pausedRun(id);

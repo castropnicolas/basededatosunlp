@@ -33,13 +33,6 @@ public class RunController {
         return ResponseEntity.status(HttpStatus.CREATED).body(runDTO);
     }
 
-    @GetMapping("/all")
-    @ApiOperation("Listar todas las carreras")
-    public ResponseEntity<?> list() {
-        Collection<RunDTO> list = this.getRunService().getAllRuns();
-        return ResponseEntity.ok().body(list);
-    }
-
     @PutMapping("/paused/{id}")
     @ApiOperation("Pausar una carrera")
     public ResponseEntity<?> paused(@PathVariable String id) {
