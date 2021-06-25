@@ -74,7 +74,7 @@ public class RunningApp {
         Optional<User> user = this.getUserRepository().findById(id);
         if (!user.isPresent())
             throw new UserUnknownException();
-        this.getUserRepository().delete(user.get());
+        this.getUsers().removeIf(anUser -> anUser.equals(user.get()));
     }
 
    /* public Run pausedRun(String anId) throws RunUnknownException {
