@@ -2,13 +2,10 @@ package ar.edu.unlp.service.impl;
 
 import ar.edu.unlp.dto.DTOFactory;
 import ar.edu.unlp.dto.UserDTO;
-import ar.edu.unlp.exceptions.UserUnknownException;
 import ar.edu.unlp.model.RunningApp;
 import ar.edu.unlp.model.User;
-import ar.edu.unlp.repository.RepositoryLocator;
-import ar.edu.unlp.repository.RunRepository;
-import ar.edu.unlp.repository.RunningAppRepository;
-import ar.edu.unlp.repository.UserRepository;
+import ar.edu.unlp.exceptions.UserUnknownException;
+import ar.edu.unlp.repository.*;
 import ar.edu.unlp.service.IUserService;
 import org.springframework.stereotype.Service;
 

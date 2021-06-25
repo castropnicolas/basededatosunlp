@@ -14,10 +14,12 @@ import ar.edu.unlp.repository.RunningAppRepository;
 import ar.edu.unlp.service.IRunService;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
 
 @Service
+@Transactional
 public class RunServiceImpl implements IRunService {
 
     @Override
@@ -67,16 +69,11 @@ public class RunServiceImpl implements IRunService {
     public RunDTO addRun(String username) throws UserUnknownException {
         RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
         Run aRun = runningApp.addRunToUser(username);
-//        RepositoryLocator.getInstance().getRunRepository().save(aRun);
         return this.getDtoFactory().createRunDTO(aRun);
     }
 
     public RunningAppRepository getRunningAppRepository() {
         return RepositoryLocator.getInstance().getRunningAppRepository();
-    }
-
-    public RunRepository getRunRepository() {
-        return RepositoryLocator.getInstance().getRunRepository();
     }
 
     public DTOFactory getDtoFactory() {
