@@ -3,12 +3,11 @@ package ar.edu.unlp.service;
 import ar.edu.unlp.dto.LocationDTO;
 import ar.edu.unlp.dto.RunDTO;
 import ar.edu.unlp.exceptions.RunUnknownException;
+import ar.edu.unlp.exceptions.UserUnknownException;
 
 import java.util.Collection;
 
 public interface IRunService {
-
-    Collection<RunDTO> getAllRuns();
 
     RunDTO pausedRun(String id) throws RunUnknownException;
 
@@ -18,8 +17,9 @@ public interface IRunService {
 
     RunDTO findById(String id) throws RunUnknownException;
 
-    LocationDTO addLocation(String idRun, Double aLatitude, Double aLongitude);
+    LocationDTO addLocation(String idRun, Double aLatitude, Double aLongitude) throws RunUnknownException;
 
     RunDTO addRun(String username) throws Exception;
 
+    Collection<RunDTO> findByUsername(String username) throws UserUnknownException;
 }

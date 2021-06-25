@@ -9,7 +9,6 @@ import ar.edu.unlp.model.Location;
 import ar.edu.unlp.model.Run;
 import ar.edu.unlp.model.RunningApp;
 import ar.edu.unlp.repository.RepositoryLocator;
-import ar.edu.unlp.repository.RunRepository;
 import ar.edu.unlp.repository.RunningAppRepository;
 import ar.edu.unlp.service.IRunService;
 import org.springframework.stereotype.Service;
@@ -21,14 +20,6 @@ import java.util.Collection;
 @Service
 @Transactional
 public class RunServiceImpl implements IRunService {
-
-    @Override
-    public Collection<RunDTO> getAllRuns() {
-        Collection<Run> runs = getRunRepository().findAll();
-        Collection<RunDTO> runDTOS = new ArrayList<>();
-        runs.forEach(anRun -> runDTOS.add(this.getDtoFactory().createRunDTO(anRun)));
-        return runDTOS;
-    }
 
     @Override
     public RunDTO pausedRun(String id) throws RunUnknownException {
@@ -59,7 +50,7 @@ public class RunServiceImpl implements IRunService {
     }
 
     @Override
-    public LocationDTO addLocation(String idRun, Double aLatitude, Double aLongitude) {
+    public LocationDTO addLocation(String idRun, Double aLatitude, Double aLongitude) throws RunUnknownException {
         RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
         Location newLocation = runningApp.addLocationToRun(idRun, aLatitude, aLongitude);
         return this.getDtoFactory().createLocationDTO(newLocation);
@@ -72,12 +63,17 @@ public class RunServiceImpl implements IRunService {
         return this.getDtoFactory().createRunDTO(aRun);
     }
 
-    public RunningAppRepository getRunningAppRepository() {
-        return RepositoryLocator.getInstance().getRunningAppRepository();
+    @Override
+    public Collection<RunDTO> findByUsername(String username) throws UserUnknownException {
+        RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
+        Collection<Run> runs = runningApp.findRunsByUser(username);
+        Collection<RunDTO> runDTOS = new ArrayList<>();
+        runs.forEach(anRun -> runDTOS.add(this.getDtoFactory().createRunDTO(anRun)));
+        return runDTOS;
     }
 
-    public RunRepository getRunRepository() {
-        return RepositoryLocator.getInstance().getRunRepository();
+    public RunningAppRepository getRunningAppRepository() {
+        return RepositoryLocator.getInstance().getRunningAppRepository();
     }
 
     public DTOFactory getDtoFactory() {

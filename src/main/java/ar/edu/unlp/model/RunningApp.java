@@ -76,7 +76,7 @@ public class RunningApp {
         Optional<User> user = this.getUserRepository().findById(id);
         if (!user.isPresent())
             throw new UserUnknownException();
-        this.getUserRepository().delete(user.get());
+        this.getUsers().removeIf(anUser -> anUser.equals(user.get()));
     }
 
     public Run pausedRun(String anId) throws RunUnknownException {
@@ -103,11 +103,18 @@ public class RunningApp {
         return optionalRun.get();
     }
 
-    public Location addLocationToRun(String idRun, Double aLongitude, Double aLatitude) {
+    public Location addLocationToRun(String idRun, Double aLongitude, Double aLatitude) throws RunUnknownException {
         Optional<Run> optionalRun = getRunRepository().findById(idRun);
+        if (!optionalRun.isPresent()) throw new RunUnknownException();
         Location newLocation = new Location(aLatitude, aLongitude);
         optionalRun.get().addLocation(newLocation);
         return newLocation;
+    }
+
+    public Collection<Run> findRunsByUser(String username) throws UserUnknownException {
+        User user = this.findByUsername(username);
+        if (user == null) throw new UserUnknownException();
+        return user.getRuns();
     }
 
     public Run addRunToUser(String username) throws UserUnknownException {
