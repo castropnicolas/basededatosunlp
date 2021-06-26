@@ -58,14 +58,14 @@ public class UserController {
         return ResponseEntity.ok().body(userDTO);
     }
 
-    @DeleteMapping("/{id}")
-    @ApiOperation("Eliminar un usuario a partir de su id")
-    public ResponseEntity<?> deleteById(@PathVariable String id) {
+    @DeleteMapping("/{username}")
+    @ApiOperation("Eliminar un usuario a partir de su nombre de usuario")
+    public ResponseEntity<?> deleteByUsername(@PathVariable String username) {
         Map<String, Object> response = new HashMap<>();
         try {
-            this.getUsersService().deleteById(id);
+            this.getUsersService().deleteByUsername(username);
         } catch (UserUnknownException i) {
-            response.put("mensaje", "Id de usuario inexistente.");
+            response.put("mensaje", "Nombre de usuario inexistente.");
             return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
         }
         response.put("mensaje", "¡Usuario eliminado con éxito!");

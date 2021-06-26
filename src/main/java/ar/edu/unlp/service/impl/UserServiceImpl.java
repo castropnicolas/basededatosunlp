@@ -56,9 +56,9 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public void deleteById(String id) throws UserUnknownException {
+    public void deleteByUsername(String username) throws UserUnknownException {
         RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
-        runningApp.deleteUserById(id);
+        runningApp.deleteUserByUsername(username);
     }
 
     @Override
