@@ -28,4 +28,9 @@ public class Active implements StateOperations {
         return time.intValue();
     }
 
+    @Override
+    public void addLocation(Run run, Location location) {
+        run.getLocations().add(location);
+    }
+
 }

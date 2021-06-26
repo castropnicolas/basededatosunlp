@@ -10,8 +10,8 @@ public class LocationDTO {
 
     }
 
-    public LocationDTO(Double latitude, Double longitude) {
-
+    public LocationDTO(String id, Double latitude, Double longitude) {
+        this.setId(id);
         this.setLatitude(latitude);
         this.setLongitude(longitude);
     }

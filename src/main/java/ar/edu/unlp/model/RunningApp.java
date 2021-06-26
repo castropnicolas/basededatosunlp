@@ -136,4 +136,11 @@ public class RunningApp {
         Long numberOfUsers = getUserRepository().count();
         return numberOfUsers.intValue();
     }
+
+    public Collection<Location> findLocationsByRun(String id) throws RunUnknownException {
+        Optional<Run> aRun = getRunRepository().findById(id);
+        if (!aRun.isPresent())
+            throw new RunUnknownException();
+        return aRun.get().getLocations();
+    }
 }

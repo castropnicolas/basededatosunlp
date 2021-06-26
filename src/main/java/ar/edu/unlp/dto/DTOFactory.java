@@ -28,7 +28,7 @@ public class DTOFactory {
     }
 
     public LocationDTO createLocationDTO(Location anLocation) {
-        return new LocationDTO(anLocation.getLatitude(), anLocation.getLatitude());
+        return new LocationDTO(anLocation.getId(), anLocation.getLatitude(), anLocation.getLatitude());
     }
 
 }

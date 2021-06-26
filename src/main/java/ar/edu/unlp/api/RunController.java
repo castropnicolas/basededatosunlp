@@ -64,7 +64,7 @@ public class RunController {
     }
 
     @PutMapping("/closed/{id}")
-    @ApiOperation("Cerrar una carrera")
+    @ApiOperation("Finalizar una carrera")
     public ResponseEntity<?> closed(@PathVariable String id) {
         RunDTO runDTO = null;
         try {
@@ -110,6 +110,18 @@ public class RunController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Id de carrera inexistente");
         }
         return ResponseEntity.ok().body(locationDTO);
+    }
+
+    @GetMapping("/{id}/locations")
+    @ApiOperation("Listar ubicaciones para una carrera")
+    public ResponseEntity<?> locationsByrun(@PathVariable String id) {
+        Collection<LocationDTO> list = null;
+        try {
+            list = this.getRunService().findLocationsByRun(id);
+        } catch (RunUnknownException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Id de carrera inexistente");
+        }
+        return ResponseEntity.ok().body(list);
     }
 
 }

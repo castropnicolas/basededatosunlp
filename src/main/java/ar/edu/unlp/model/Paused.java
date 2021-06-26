@@ -26,4 +26,9 @@ public class Paused implements StateOperations {
         return time.intValue();
     }
 
+    @Override
+    public void addLocation(Run run, Location location) {
+
+    }
+
 }

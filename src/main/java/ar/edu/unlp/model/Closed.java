@@ -22,4 +22,9 @@ public class Closed implements StateOperations {
         Long time = (run.getEnd().getTime() - run.getStart().getTime()) / 1000;
         return time.intValue();
     }
+
+    @Override
+    public void addLocation(Run run, Location location) {
+
+    }
 }
