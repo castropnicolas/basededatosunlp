@@ -15,7 +15,6 @@ public class PersistenceJPAConfig {
     public LocalEntityManagerFactoryBean entityManagerFactoryBean() {
         LocalEntityManagerFactoryBean bean = new LocalEntityManagerFactoryBean();
         bean.setPersistenceUnitName("ogm-mongodb");
-        // fixes collection proxy problem when using jersey
         bean.getJpaPropertyMap().put("hibernate.enable_lazy_load_no_trans", true);
         return bean;
     }
