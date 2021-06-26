@@ -15,26 +15,25 @@ public class UserRepositoryImpl implements UserRepository {
     private EntityManager entityManager;
 
     @Override
-    User findByUsername(RunningApp runningApp, String anUsername) {
-
-        String query = "db.users.find({'username' :'pcastro' })";
+    public User findByUsername(RunningApp runningApp, String anUsername) {
+        String query = "db.users.find({'username' :':username'," +
+                "'running_app_id' : ':runningApp' })";
         query = query.replace(":username", anUsername);
-        Long count = (Long) entityManager.createNativeQuery(query).getSingleResult();
-        return count > 0;
-
-        return entityManager.createQuery(
-                "FROM User u where u.username = :username", User.class)
-                .setParameter("username", anUsername)
+        query = query.replace(":runningApp", runningApp.getId());
+        Optional<User> user = Optional.of(entityManager.createNativeQuery(query, User.class)
                 .getResultList()
                 .stream()
-                .findFirst()
-                .orElse(null);
+                .findFirst())
+                .orElse(Optional.empty());
+        return user.isPresent() ? user.get() : null;
     }
 
     @Override
     public Long count(RunningApp runningApp) {
-        Integer count = (Integer) entityManager.createQuery("SELECT COUNT(u) FROM User u").getSingleResult();
-        return count.longValue();
+        String query = "db.users.count({'running_app_id':':runningApp' })";
+        query = query.replace(":runningApp", runningApp.getId());
+        Long count = (Long) entityManager.createNativeQuery(query).getSingleResult();
+        return count;
     }
 
 }
