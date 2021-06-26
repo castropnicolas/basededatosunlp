@@ -22,4 +22,6 @@ public interface IRunService {
     RunDTO addRun(String username) throws Exception;
 
     Collection<RunDTO> findByUsername(String username) throws UserUnknownException;
+
+    Collection<LocationDTO> findLocationsByRun(String id) throws RunUnknownException;
 }

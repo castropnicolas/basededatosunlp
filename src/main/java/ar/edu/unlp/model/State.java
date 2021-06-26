@@ -32,4 +32,9 @@ public enum State implements StateOperations {
         return operations.time(run);
     }
 
+    @Override
+    public void addLocation(Run run, Location location) {
+        operations.addLocation(run, location);
+    }
+
 }

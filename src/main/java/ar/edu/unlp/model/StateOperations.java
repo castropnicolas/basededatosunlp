@@ -10,4 +10,6 @@ public interface StateOperations {
 
     Integer time(Run run);
 
+    void addLocation(Run run, Location location);
+
 }
