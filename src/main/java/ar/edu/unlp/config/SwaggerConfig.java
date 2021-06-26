@@ -1,4 +1,4 @@
-package ar.edu.unlp.api.config;
+package ar.edu.unlp.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
