@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.math.BigInteger;
 import java.util.Optional;
 
 @Repository
@@ -27,6 +28,14 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
                 .stream()
                 .findFirst();
         return user.isPresent() ? user.get() : null;
+    }
+
+    @Override
+    public Long count(RunningApp runningApp) {
+        String countUsers = "SELECT count(*)  FROM users u " +
+                "WHERE u.running_app_id = '" + runningApp.getId() + "' ";
+        BigInteger count = (BigInteger) entityManager.createNativeQuery(countUsers).getSingleResult();
+        return count.longValue();
     }
 
 }

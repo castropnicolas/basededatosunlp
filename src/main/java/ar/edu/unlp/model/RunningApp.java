@@ -130,7 +130,7 @@ public class RunningApp {
     }
 
     public Integer numberOfUsers() {
-        Long numberOfUsers = getUserRepository().count();
+        Long numberOfUsers = getUserRepository().count(this);
         return numberOfUsers.intValue();
     }
 
