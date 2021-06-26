@@ -8,4 +8,6 @@ public interface UserRepository extends UserRepositoryCustom, JpaRepository<User
 
     User findByUsername(RunningApp runningApp, String anUsername);
 
+    Long count(RunningApp runningApp);
+
 }

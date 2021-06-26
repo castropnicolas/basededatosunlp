@@ -7,4 +7,6 @@ public interface UserRepositoryCustom {
 
     User findByUsername(RunningApp runningApp, String anUsername);
 
+    Long count(RunningApp runningApp);
+
 }
