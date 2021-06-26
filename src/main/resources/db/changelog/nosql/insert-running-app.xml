@@ -13,10 +13,14 @@
         <ext:insertOne collectionName="runningApp">
             <ext:document>
                 <!-- @formatter:off -->
-                {
+                [{
                     "_id": "a4295f86-6cd0-4f48-acda-080005f3a558",
-                    "_class": "ar.edu.unlp.model.RunningApp"
-                }
+                    "users": [
+                        "402881837a451605017a4516e7620000",
+                        "402881837a451605017a4516fcb00001",
+                        "402881837a451605017a45172e380002"
+                        ]
+                }]
                 <!-- @formatter:on -->
             </ext:document>
         </ext:insertOne>

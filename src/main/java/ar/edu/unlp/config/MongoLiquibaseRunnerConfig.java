@@ -16,11 +16,12 @@ public class MongoLiquibaseRunnerConfig {
         return new MongoLiquibaseRunner(database);
     }
 
-    */
+*/
 /**
      * @return Database with connection
-     * @throws DatabaseException when cannot connect
-     *//*
+     * @throws DatabaseException when cannot connect*//*
+
+
 
     @Bean
     public MongoLiquibaseDatabase database() throws DatabaseException {
