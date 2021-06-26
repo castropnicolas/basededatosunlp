@@ -20,19 +20,3 @@ services:
       WAIT_HOSTS: mongo:27017
     depends_on:
       - docker-mongodb
-
-
-#mongo:
-#  image: mongo
-#  restart: always
-#  volumes:
-#    - database:/data/db
-#  ports:
-#    - "27017:27017"
-#app:
-#  build: .
-#  dockerfile: docker/Dockerfile
-#  ports:
-#    - "8085:8080"
-#  links:
-#    - mongo
