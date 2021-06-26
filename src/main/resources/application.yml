@@ -14,7 +14,7 @@ spring:
       - mappings/RunningApp.hbm.xml
       - mappings/Run.hbm.xml
       - mappings/Location.hbm.xml
-    show-sql: true
+    show-sql: false
     hibernate.ddl-auto: none
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.xml
