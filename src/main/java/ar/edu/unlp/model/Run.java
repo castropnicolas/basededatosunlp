@@ -51,7 +51,7 @@ public class Run {
     }
 
     public void addLocation(Location location) {
-        this.getLocations().add(location);
+        this.state.addLocation(this, location);
     }
 
     public State getState() {

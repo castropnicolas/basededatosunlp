@@ -72,6 +72,15 @@ public class RunServiceImpl implements IRunService {
         return runDTOS;
     }
 
+    @Override
+    public Collection<LocationDTO> findLocationsByRun(String id) throws RunUnknownException {
+        RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
+        Collection<Location> locations = runningApp.findLocationsByRun(id);
+        Collection<LocationDTO> locationDTOS = new ArrayList<>();
+        locations.forEach(aLocation -> locationDTOS.add(this.getDtoFactory().createLocationDTO(aLocation)));
+        return locationDTOS;
+    }
+
     public RunningAppRepository getRunningAppRepository() {
         return RepositoryLocator.getInstance().getRunningAppRepository();
     }
