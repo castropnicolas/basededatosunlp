@@ -48,18 +48,16 @@ public class RunningApp {
     }
 
     public User addUser(String username, String password, String name) throws UsernameNotUniqueException {
-        if (!this.getUserRepository().existsByUsername(username)) {
-            User newUser = new User(username, password, name);
-            newUser.setCreatedAt(new Date());
-            this.getUsers().add(newUser);
-            return newUser;
-        } else {
-            throw new UsernameNotUniqueException();
-        }
+        User user = this.getUserRepository().findByUsername(this, username);
+        if (user != null) throw new UsernameNotUniqueException();
+        User newUser = new User(username, password, name);
+        newUser.setCreatedAt(new Date());
+        this.getUsers().add(newUser);
+        return newUser;
     }
 
     public User findByUsername(String username) throws UserUnknownException {
-        User user = this.getUserRepository().findByUsername(username);
+        User user = this.getUserRepository().findByUsername(this, username);
         if (user == null)
             throw new UserUnknownException();
         return user;
@@ -72,11 +70,10 @@ public class RunningApp {
         return optionalRun.get();
     }
 
-    public void deleteUserById(String id) throws UserUnknownException {
-        Optional<User> user = this.getUserRepository().findById(id);
-        if (!user.isPresent())
-            throw new UserUnknownException();
-        this.getUsers().removeIf(anUser -> anUser.equals(user.get()));
+    public void deleteUserByUsername(String username) throws UserUnknownException {
+        User user = this.getUserRepository().findByUsername(this, username);
+        if (user == null) throw new UserUnknownException();
+        this.getUsers().removeIf(anUser -> anUser.equals(user));
     }
 
     public Run pausedRun(String anId) throws RunUnknownException {
@@ -133,7 +130,7 @@ public class RunningApp {
     }
 
     public Integer numberOfUsers() {
-        Long numberOfUsers = getUserRepository().count();
+        Long numberOfUsers = getUserRepository().count(this);
         return numberOfUsers.intValue();
     }
 

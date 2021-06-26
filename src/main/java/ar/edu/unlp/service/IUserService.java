@@ -15,8 +15,7 @@ public interface IUserService {
 
     UserDTO updateUser(String username, UserDTO userDTO) throws UserUnknownException;
 
-    void deleteById(String id) throws IllegalArgumentException, UserUnknownException;
-
     Integer numberOfUsers();
 
+    void deleteByUsername(String username) throws IllegalArgumentException, UserUnknownException;
 }
