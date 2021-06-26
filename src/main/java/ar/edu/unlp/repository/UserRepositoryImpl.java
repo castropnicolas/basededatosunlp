@@ -12,7 +12,6 @@ import java.math.BigInteger;
 import java.util.Optional;
 
 @Repository
-@Transactional(readOnly = true)
 public class UserRepositoryImpl implements UserRepositoryCustom {
 
     @PersistenceContext
