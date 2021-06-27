@@ -5,6 +5,7 @@ import ar.edu.unlp.dto.RunDTO;
 import ar.edu.unlp.exceptions.RunUnknownException;
 import ar.edu.unlp.exceptions.UserUnknownException;
 import ar.edu.unlp.service.IRunService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.Collection;
 
 @RestController
+@Api("API de carreras")
 @RequestMapping("/run")
 public class RunController {
 
