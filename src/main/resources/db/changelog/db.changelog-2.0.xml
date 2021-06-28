@@ -11,6 +11,12 @@
                     type="datetime">
             </column>
         </addColumn>
+        <addColumn tableName="users">
+            <column afterColumn="created_at"
+                    name="version"
+                    type="INT">
+            </column>
+        </addColumn>
     </changeSet>
 
     <changeSet author="nicolas" id="4">

@@ -2,7 +2,7 @@ spring:
   application:
     name: basededatos-unlp
   datasource:
-    url: jdbc:postgresql://docker-postgres:5432/basededatosunlp?serverTimezone=UTC&useUnicode=yes&characterEncoding=UTF-8
+    url: jdbc:postgresql://localhost:5432/basededatosunlp?serverTimezone=UTC&useUnicode=yes&characterEncoding=UTF-8
     username: postgres
     password: postgres
     testWhileIdle: true

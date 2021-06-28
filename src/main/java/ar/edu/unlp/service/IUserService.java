@@ -2,6 +2,7 @@ package ar.edu.unlp.service;
 
 import ar.edu.unlp.dto.UserDTO;
 import ar.edu.unlp.exceptions.UserUnknownException;
+import org.springframework.dao.OptimisticLockingFailureException;
 
 import java.util.Collection;
 
@@ -13,7 +14,7 @@ public interface IUserService {
 
     UserDTO findByUsername(String username) throws UserUnknownException;
 
-    UserDTO updateUser(String username, UserDTO userDTO) throws UserUnknownException;
+    UserDTO updateUser(String username, UserDTO userDTO) throws OptimisticLockingFailureException, UserUnknownException;
 
     Integer numberOfUsers();
 

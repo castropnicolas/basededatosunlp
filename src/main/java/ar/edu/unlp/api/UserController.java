@@ -6,6 +6,7 @@ import ar.edu.unlp.exceptions.UsernameNotUniqueException;
 import ar.edu.unlp.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -81,6 +82,10 @@ public class UserController {
         } catch (UserUnknownException e) {
             Map<String, Object> response = new HashMap<>();
             response.put("mensaje", "Nombre de usuario inexistente.");
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        } catch (OptimisticLockingFailureException o) {
+            Map<String, Object> response = new HashMap<>();
+            response.put("mensaje", "Este registro se actualizo anteriormente por otro.");
             return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.status(HttpStatus.OK).body(userDTO);
