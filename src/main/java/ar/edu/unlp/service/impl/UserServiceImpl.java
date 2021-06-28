@@ -2,11 +2,15 @@ package ar.edu.unlp.service.impl;
 
 import ar.edu.unlp.dto.DTOFactory;
 import ar.edu.unlp.dto.UserDTO;
+import ar.edu.unlp.exceptions.UserUnknownException;
 import ar.edu.unlp.model.RunningApp;
 import ar.edu.unlp.model.User;
-import ar.edu.unlp.exceptions.UserUnknownException;
-import ar.edu.unlp.repository.*;
+import ar.edu.unlp.repository.RepositoryLocator;
+import ar.edu.unlp.repository.RunRepository;
+import ar.edu.unlp.repository.RunningAppRepository;
+import ar.edu.unlp.repository.UserRepository;
 import ar.edu.unlp.service.IUserService;
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -46,13 +50,29 @@ public class UserServiceImpl implements IUserService {
         return this.getDtoFactory().createUserDTO(user);
     }
 
-    @Override
-    public UserDTO updateUser(String username, UserDTO userDTO) throws UserUnknownException {
+    /*
+     * Bloqueo optimista
+     * - Si ya se ha actualizado, se asume que el bloqueo optimista lanzará una excepción, así que
+     * capturo la excepción aquí y muestro un mensaje de error.
+     * - Si no hay errores, realizo la edición.
+     *
+     * Para facilitar la lectura del código nombre los objetos como before y after
+     *
+     * -Al actualizar, se requiere un mecanismo como el bloqueo optimista para evitar la sobrescritura accidental de los cambios realizados por otros usuarios.
+     * -Al actualizar, la versión debe ser avanzada y se debe realizar el control de versiones.
+     */
+    public UserDTO updateUser(String username, UserDTO after) throws OptimisticLockingFailureException, UserUnknownException {
         RunningApp runningApp = this.getRunningAppRepository().findFirstByOrderById();
-        User user = runningApp.findByUsername(username);
-        if (userDTO.getUsername() != null) user.setUsername(userDTO.getUsername());
-        if (userDTO.getName() != null) user.setName(userDTO.getName());
-        return this.getDtoFactory().createUserDTO(user);
+        User before = runningApp.findByUsername(username);
+        checkConcurrency(after, before);
+        if (after.getUsername() != null) before.setUsername(after.getUsername());
+        if (after.getName() != null) before.setName(after.getName());
+        return this.getDtoFactory().createUserDTO(before);
+    }
+
+    private void checkConcurrency(UserDTO after, User before) {
+        if (before.getVersion() != after.getVersion())
+            throw new OptimisticLockingFailureException("No hay datos de actualización o ya se han actualizado");
     }
 
     @Override

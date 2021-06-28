@@ -16,6 +16,8 @@ public class UserDTO {
 
     private Date createdAt;
 
+    private Integer version;
+
     public UserDTO() {
 
     }
@@ -57,5 +59,13 @@ public class UserDTO {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 }
