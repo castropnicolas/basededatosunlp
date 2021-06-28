@@ -22,11 +22,12 @@ public class UserDTO {
 
     }
 
-    public UserDTO(String anId, String anUsername, String aName, Date createdAt) {
+    public UserDTO(String anId, String anUsername, String aName, Date createdAt, Integer version) {
         this.setId(anId);
         this.setName(aName);
         this.setUsername(anUsername);
         this.setCreatedAt(createdAt);
+        this.setVersion(version);
     }
 
     public String getId() {

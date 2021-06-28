@@ -20,7 +20,7 @@ public class DTOFactory {
     }
 
     public UserDTO createUserDTO(User anUser) {
-        return new UserDTO(anUser.getId(), anUser.getUsername(), anUser.getName(), anUser.getCreatedAt());
+        return new UserDTO(anUser.getId(), anUser.getUsername(), anUser.getName(), anUser.getCreatedAt(), anUser.getVersion());
     }
 
     public RunDTO createRunDTO(Run anRun) {
