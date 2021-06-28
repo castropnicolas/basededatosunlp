@@ -11,6 +11,7 @@ public class User {
     private String password;
     private String name;
     private Date createdAt;
+    private Integer version;
     private Collection<Run> runs;
 
     public User() {
@@ -74,5 +75,13 @@ public class User {
 
     public void addRun(Run newRun) {
         this.getRuns().add(newRun);
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 }
