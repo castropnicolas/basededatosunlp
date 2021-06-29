@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class MongoLiquibaseRunnerConfig {
-    public final String url = "mongodb://localhost:27017/liquibaseagain?socketTimeoutMS=1000&connectTimeoutMS=1000&serverSelectionTimeoutMS=1000";
+    public final String url = "mongodb://localhost:27017/basededatosunlp?socketTimeoutMS=1000&connectTimeoutMS=1000&serverSelectionTimeoutMS=1000";
 
     @Bean
     public MongoLiquibaseRunner liquibaseRunner(final MongoLiquibaseDatabase database) {
