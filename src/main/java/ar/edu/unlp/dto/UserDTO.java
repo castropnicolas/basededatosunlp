@@ -16,15 +16,18 @@ public class UserDTO {
 
     private Date createdAt;
 
+    private Integer version;
+
     public UserDTO() {
 
     }
 
-    public UserDTO(String anId, String anUsername, String aName, Date createdAt) {
+    public UserDTO(String anId, String anUsername, String aName, Date createdAt, Integer version) {
         this.setId(anId);
         this.setName(aName);
         this.setUsername(anUsername);
         this.setCreatedAt(createdAt);
+        this.setVersion(version);
     }
 
     public String getId() {
@@ -57,5 +60,13 @@ public class UserDTO {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 }

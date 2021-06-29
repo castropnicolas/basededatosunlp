@@ -6,11 +6,11 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
     <changeSet id="3" author="nicolas">
-        <ext:createCollection collectionName="user"/>
+        <ext:createCollection collectionName="users"/>
     </changeSet>
 
     <changeSet id="4" author="nicolas">
-        <ext:insertMany collectionName="user">
+        <ext:insertMany collectionName="users">
             <ext:documents>
                 <!-- @formatter:off -->
                 [{

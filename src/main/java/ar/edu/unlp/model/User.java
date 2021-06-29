@@ -23,6 +23,7 @@ public class User {
         this.setName(aName);
         this.setPassword(aPassword);
         this.setRuns(new HashSet<>());
+        this.setVersion(0);
     }
 
     public String getId() {

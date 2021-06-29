@@ -8,6 +8,8 @@
         <provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
         <properties>
             <property name="hibernate.ogm.datastore.provider" value="MONGODB" />
+            <!--<property name="hibernate.ogm.mongodb.host" value="127.0.0.1"/>-->
+            <!--<property name="hibernate.ogm.mongodb.port" value="docker-mongodb"/>-->
             <property name="hibernate.ogm.datastore.database" value="basededatosunlp" />
             <property name="hibernate.ogm.datastore.create_database" value="true" />
         </properties>
