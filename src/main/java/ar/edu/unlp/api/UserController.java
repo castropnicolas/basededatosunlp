@@ -85,7 +85,7 @@ public class UserController {
             return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
         } catch (OptimisticLockingFailureException o) {
             Map<String, Object> response = new HashMap<>();
-            response.put("mensaje", "Este registro se actualizo anteriormente por otro.");
+            response.put("mensaje", "No hay datos de actualización o este registro ya se actualizo anteriormente por otro.");
             return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.status(HttpStatus.OK).body(userDTO);
