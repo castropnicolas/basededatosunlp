@@ -6,7 +6,7 @@
 
     <include relativeToChangelogFile="true" file="nosql/insert-running-app.xml"/>
     <include relativeToChangelogFile="true" file="nosql/insert-users.xml"/>
-      <include relativeToChangelogFile="true" file="nosql/insert-runs.xml"/>
+    <include relativeToChangelogFile="true" file="nosql/insert-runs.xml"/>
     <include relativeToChangelogFile="true" file="nosql/insert-locations.xml"/>
 
 </databaseChangeLog>
